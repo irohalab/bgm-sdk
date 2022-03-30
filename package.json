@@ -4,7 +4,10 @@
   "description": "Typescript SDK for bgm.tv",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "update": "wget https://bangumi.github.io/api/dist.json",
+    "autorest": "$(npm bin)/autorest",
+    "build": "npm run autorest --use:@autorest/modelerfour@4.15.448 README.md"
   },
   "repository": {
     "type": "git",
@@ -15,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/irohalab/bgm-sdk/issues"
   },
-  "homepage": "https://github.com/irohalab/bgm-sdk#readme"
+  "homepage": "https://github.com/irohalab/bgm-sdk#readme",
+  "dependencies": {
+    "autorest": "^3.6.1"
+  }
 }
