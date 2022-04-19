@@ -3,7 +3,7 @@
   "info": {
     "title": "Bangumi API",
     "description": "你可以在 <https://api.bgm.tv/v0/oauth/> 生成一个 Access Token\n\n## 建议客户端开发者指定一个带有 APP 名称和版本的 User Agent，而非使用 HTTP 请求库默认的 UA\n\n各种请求库的默认 UA 在未来可能会被禁用。\n",
-    "version": "2022-03-27",
+    "version": "2022-04-19",
     "contact": {
       "name": "Bangumi API",
       "url": "https://github.com/bangumi/api/"
@@ -2368,7 +2368,14 @@
             "Suspended",
             "Abandoned"
           ]
-        }
+        },
+        "x-enum-varnames": [
+          "Todo",
+          "Done",
+          "Doing",
+          "Suspended",
+          "Abandoned"
+        ]
       },
       "CollectionStatus": {
         "description": "收藏状态 <br> 1 = wish = 想做 <br> 2 = collect = 做过 <br> 3 = do = 在做 <br> 4 = on_hold = 搁置 <br> 5 = dropped = 抛弃",
@@ -2422,7 +2429,13 @@
             "Abandoned",
             "Undo"
           ]
-        }
+        },
+        "x-enum-varnames": [
+          "Watched",
+          "Wish",
+          "Abandoned",
+          "Undo"
+        ]
       },
       "ResponseGroup": {
         "description": "返回数据大小",
@@ -2439,7 +2452,11 @@
             "Small",
             "Medium"
           ]
-        }
+        },
+        "x-enum-varnames": [
+          "Small",
+          "Medium"
+        ]
       },
       "SubjectType": {
         "description": "条目类型 <br> 1 = book <br> 2 = anime <br> 3 = music <br> 4 = game <br> 6 = real",
@@ -2474,7 +2491,14 @@
             "Game",
             "Real"
           ]
-        }
+        },
+        "x-enum-varnames": [
+          "Book",
+          "Anime",
+          "Music",
+          "Game",
+          "Real"
+        ]
       },
       "SubjectCollection": {
         "description": "收藏人数",
@@ -2844,6 +2868,7 @@
           },
           "images": {
             "title": "Images",
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/PersonImages"
@@ -3061,6 +3086,7 @@
           },
           "data": {
             "title": "Data",
+            "type": "string",
             "description": "编辑修改内容"
           }
         }
@@ -4051,6 +4077,7 @@
           },
           "images": {
             "title": "Images",
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/PersonImages"
@@ -4109,6 +4136,7 @@
           },
           "images": {
             "title": "Images",
+            "type": "object",
             "allOf": [
               {
                 "$ref": "#/components/schemas/PersonImages"

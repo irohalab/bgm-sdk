@@ -6,8 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "update": "wget https://bangumi.github.io/api/dist.json",
-    "autorest": "$(npm bin)/autorest",
-    "build": "npm run autorest --use:@autorest/modelerfour@4.15.448 README.md"
+    "generate": "npm run clean:src && npx openapi-generator-cli generate",
+    "clean:dist": "rimraf sdk/typescript/dist/*",
+    "clean:src": "rimraf sdk/typescript/src/",
+    "build": "npm run clean:dist && tsc --project sdk/typescript/tsconfig.json"
   },
   "repository": {
     "type": "git",
@@ -19,7 +21,13 @@
     "url": "https://github.com/irohalab/bgm-sdk/issues"
   },
   "homepage": "https://github.com/irohalab/bgm-sdk#readme",
-  "dependencies": {
-    "autorest": "^3.6.1"
+  "dependencies": {},
+  "devDependencies": {
+    "@openapitools/openapi-generator-cli": "^2.4.26",
+    "inversify": "^6.0.1",
+    "reflect-metadata": "^0.1.13",
+    "rimraf": "^3.0.2",
+    "rxjs": "^7.5.5",
+    "typescript": "^4.6.3"
   }
 }
