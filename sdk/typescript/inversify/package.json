@@ -1,6 +1,6 @@
 {
   "name": "@irohalab/bgm-sdk-inversify",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "An SDK for bgm.tv API",
   "keywords": [],
   "author": "IrohaLab",

@@ -17,6 +17,7 @@ jobs:
         with:
           node-version: 16
           registry-url: https://registry.npmjs.org/
+          scope: '@irohalab'
       - run: yarn
       - run: yarn run build
       - run: ./scripts/publish.sh
