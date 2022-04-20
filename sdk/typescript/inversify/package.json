@@ -1,6 +1,6 @@
 {
   "name": "@irohalab/bgm-sdk-inversify",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "An SDK for bgm.tv API",
   "keywords": [],
   "author": "IrohaLab",
@@ -17,5 +17,9 @@
     "rimraf": "^3.0.2",
     "rxjs": "^7.5.5",
     "typescript": "^4.6.3"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   }
 }
