@@ -7,15 +7,15 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "update": "wget https://bangumi.github.io/api/dist.json",
     "generate": "npm run clean:src && npx openapi-generator-cli generate",
-    "clean:dist": "rimraf sdk/typescript/dist/*",
-    "clean:src": "rimraf sdk/typescript/src/",
-    "build": "npm run clean:dist && tsc --project sdk/typescript/tsconfig.json"
+    "clean:dist": "rimraf sdk/typescript/inversify/dist/*",
+    "clean:src": "rimraf sdk/typescript/inversify/src/",
+    "build": "npm run clean:dist && tsc --project sdk/typescript/inversify/tsconfig.json"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/irohalab/bgm-sdk.git"
   },
-  "author": "",
+  "author": "Irohalab",
   "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/irohalab/bgm-sdk/issues"

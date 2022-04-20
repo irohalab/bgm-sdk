@@ -5,9 +5,9 @@
     "version": "5.4.0",
     "storageDir": "openapi-generator-files",
     "generators": {
-      "bgm-sdk": {
+      "inversify": {
         "generatorName": "typescript-inversify",
-        "output": "#{cwd}/sdk/typescript/src",
+        "output": "#{cwd}/sdk/typescript/inversify/src",
         "glob": "dist.json",
         "additionalProperties": {
           "useRxJS6": "true",

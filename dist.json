@@ -3,7 +3,7 @@
   "info": {
     "title": "Bangumi API",
     "description": "你可以在 <https://api.bgm.tv/v0/oauth/> 生成一个 Access Token\n\n## 建议客户端开发者指定一个带有 APP 名称和版本的 User Agent，而非使用 HTTP 请求库默认的 UA\n\n各种请求库的默认 UA 在未来可能会被禁用。\n",
-    "version": "2022-04-19",
+    "version": "2022-04-20",
     "contact": {
       "name": "Bangumi API",
       "url": "https://github.com/bangumi/api/"
@@ -21,7 +21,7 @@
           "用户"
         ],
         "summary": "用户信息",
-        "operationId": "get_user_by_username",
+        "operationId": "getUserByUsername",
         "parameters": [
           {
             "$ref": "#/components/parameters/username"
@@ -48,7 +48,7 @@
           "用户"
         ],
         "summary": "用户收藏",
-        "operationId": "get_user_collection_by_username",
+        "operationId": "getUserCollectionsByUsername",
         "parameters": [
           {
             "$ref": "#/components/parameters/username"
@@ -161,7 +161,7 @@
           "用户"
         ],
         "summary": "用户收藏概览",
-        "operationId": "get_user_collection_by_subject_type_by_username",
+        "operationId": "getUserCollectionsBySubjectType",
         "parameters": [
           {
             "$ref": "#/components/parameters/username"
@@ -255,7 +255,7 @@
           "用户"
         ],
         "summary": "用户收藏统计",
-        "operationId": "get_user_collections_status_by_username",
+        "operationId": "getUserCollectionStatusByUsername",
         "parameters": [
           {
             "$ref": "#/components/parameters/username"
@@ -316,7 +316,7 @@
           "用户"
         ],
         "summary": "用户收视进度",
-        "operationId": "get_user_progress_by_username",
+        "operationId": "getUserProgressByUsername",
         "parameters": [
           {
             "$ref": "#/components/parameters/username"
@@ -405,7 +405,7 @@
           "条目"
         ],
         "summary": "每日放送",
-        "operationId": "get_calendar",
+        "operationId": "getCalendar",
         "responses": {
           "200": {
             "description": "每日放送",
@@ -458,7 +458,7 @@
           "搜索"
         ],
         "summary": "条目搜索",
-        "operationId": "get_search_subject_by_keywords",
+        "operationId": "getSearchSubjectBykeywords",
         "parameters": [
           {
             "name": "keywords",
@@ -534,7 +534,7 @@
           "进度"
         ],
         "summary": "更新收视进度",
-        "operationId": "get_episode_status_by_episode_id_by_status",
+        "operationId": "getEpisodeStatus",
         "parameters": [
           {
             "$ref": "#/components/parameters/ep_id"
@@ -576,7 +576,7 @@
           "进度"
         ],
         "summary": "更新收视进度",
-        "operationId": "post_update_episode_status_by_episode_id_by_status",
+        "operationId": "UpdateEpisodeStatus",
         "parameters": [
           {
             "$ref": "#/components/parameters/ep_id"
@@ -630,7 +630,7 @@
           "进度"
         ],
         "summary": "批量更新收视进度",
-        "operationId": "post_batch_update_episode_status_by_subject_id",
+        "operationId": "batchUpdateEpisodeStatusBySubjectId",
         "parameters": [
           {
             "$ref": "#/components/parameters/subject_id"
@@ -691,7 +691,7 @@
           "收藏"
         ],
         "summary": "获取指定条目收藏信息",
-        "operationId": "get_collection_by_subject_id",
+        "operationId": "getCollectionBySubjectId",
         "parameters": [
           {
             "$ref": "#/components/parameters/subject_id"
@@ -735,7 +735,7 @@
           "收藏"
         ],
         "summary": "管理收藏",
-        "operationId": "post_update_collection_by_subject_id_with_action",
+        "operationId": "UpdateCollectionBySubjectIdWithAction",
         "description": "管理收藏。Content-type必须为multipart/form-data或application/x-www-form-urlencoded，参数都得放在body里。",
         "requestBody": {
           "description": "必须是content-type对应的形式，不能采用Raw",
@@ -820,7 +820,7 @@
         ],
         "summary": "获取条目",
         "description": "cache with 300s",
-        "operationId": "get_subject_by_id_v0_subjects__subject_id__get",
+        "operationId": "getSubjectById",
         "parameters": [
           {
             "required": true,
@@ -878,7 +878,7 @@
           "条目"
         ],
         "summary": "Get Subject Persons",
-        "operationId": "get_subject_persons_v0_subjects__subject_id__persons_get",
+        "operationId": "getRelatedPersonsBySubjectId",
         "parameters": [
           {
             "required": true,
@@ -940,7 +940,7 @@
           "条目"
         ],
         "summary": "Get Subject Characters",
-        "operationId": "get_subject_characters_v0_subjects__subject_id__characters_get",
+        "operationId": "getRelatedCharactersBySubjectId",
         "parameters": [
           {
             "required": true,
@@ -1002,7 +1002,7 @@
           "条目"
         ],
         "summary": "Get Subject Relations",
-        "operationId": "get_subject_relations_v0_subjects__subject_id__subjects_get",
+        "operationId": "getRelatedSubjectsBySubjectId",
         "parameters": [
           {
             "required": true,
@@ -1064,7 +1064,7 @@
           "章节"
         ],
         "summary": "Get Episodes",
-        "operationId": "get_episodes_v0_episodes_get",
+        "operationId": "getEpisodes",
         "parameters": [
           {
             "required": true,
@@ -1160,7 +1160,7 @@
           "章节"
         ],
         "summary": "Get Episode",
-        "operationId": "get_episode_v0_episodes__episode_id__get",
+        "operationId": "getEpisodeById",
         "parameters": [
           {
             "required": true,
@@ -1218,7 +1218,7 @@
         ],
         "summary": "Get Character Detail",
         "description": "cache with 60s",
-        "operationId": "get_character_detail_v0_characters__character_id__get",
+        "operationId": "getCharacterById",
         "parameters": [
           {
             "required": true,
@@ -1271,7 +1271,7 @@
           "角色"
         ],
         "summary": "get character related subjects",
-        "operationId": "get_person_subjects_v0_characters__character_id__subjects_get",
+        "operationId": "getRelatedSubjectsByCharacterId",
         "parameters": [
           {
             "required": true,
@@ -1328,7 +1328,7 @@
           "角色"
         ],
         "summary": "get character related persons",
-        "operationId": "get_character_persons_v0_characters__character_id__persons_get",
+        "operationId": "getRelatedPersonsByCharacterId",
         "parameters": [
           {
             "required": true,
@@ -1386,7 +1386,7 @@
         ],
         "summary": "Get Person",
         "description": "cache with 60s",
-        "operationId": "get_person_v0_persons__person_id__get",
+        "operationId": "getPersonById",
         "parameters": [
           {
             "required": true,
@@ -1439,7 +1439,7 @@
           "人物"
         ],
         "summary": "get person related subjects",
-        "operationId": "get_person_subjects_v0_persons__person_id__subjects_get",
+        "operationId": "getRelatedSubjectsByPersonId",
         "parameters": [
           {
             "required": true,
@@ -1496,7 +1496,7 @@
           "人物"
         ],
         "summary": "get person related characters",
-        "operationId": "get_person_characters_v0_persons__person_id__characters_get",
+        "operationId": "getRelatedPersonsByPersonId",
         "parameters": [
           {
             "required": true,
@@ -1554,7 +1554,7 @@
         ],
         "summary": "Get User",
         "description": "返回当前 Access Token 对应的用户信息",
-        "operationId": "get_user_v0_me_get",
+        "operationId": "getUser",
         "responses": {
           "200": {
             "description": "Successful Response",
@@ -1591,7 +1591,7 @@
         ],
         "summary": "获取用户收藏",
         "description": "获取对应用户的收藏，查看私有收藏需要access token。",
-        "operationId": "get_user_collection_v0_users__username__collections_get",
+        "operationId": "getUserCollectionsByUsername1",
         "parameters": [
           {
             "description": "设置了 username 后无法使用UID",
@@ -1703,7 +1703,7 @@
           "编辑历史"
         ],
         "summary": "Get Person Revisions",
-        "operationId": "get_person_revisions_v0_revisions_persons_get",
+        "operationId": "getPersonRevisions",
         "parameters": [
           {
             "required": true,
@@ -1769,7 +1769,7 @@
           "编辑历史"
         ],
         "summary": "Get Person Revision",
-        "operationId": "get_person_revision_v0_revisions_persons__revision_id__get",
+        "operationId": "getPersonRevisionByRevisionId",
         "parameters": [
           {
             "required": true,
@@ -1822,7 +1822,7 @@
           "编辑历史"
         ],
         "summary": "Get Character Revisions",
-        "operationId": "get_character_revisions_v0_revisions_characters_get",
+        "operationId": "getCharacterRevisions",
         "parameters": [
           {
             "required": true,
@@ -1888,7 +1888,7 @@
           "编辑历史"
         ],
         "summary": "Get Character Revision",
-        "operationId": "get_character_revision_v0_revisions_characters__revision_id__get",
+        "operationId": "getCharacterRevisionByRevisionId",
         "parameters": [
           {
             "required": true,
@@ -1941,7 +1941,7 @@
           "编辑历史"
         ],
         "summary": "Get Subject Revisions",
-        "operationId": "get_subject_revisions_v0_revisions_subjects_get",
+        "operationId": "getSubjectRevisions",
         "parameters": [
           {
             "required": true,
@@ -2007,7 +2007,7 @@
           "编辑历史"
         ],
         "summary": "Get Subject Revision",
-        "operationId": "get_subject_revision_v0_revisions_subjects__revision_id__get",
+        "operationId": "getSubjectRevisionByRevisionId",
         "parameters": [
           {
             "required": true,
@@ -2026,7 +2026,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DetailedRevision"
+                  "$ref": "#/components/schemas/SubjectRevision"
                 }
               }
             }
@@ -2060,7 +2060,7 @@
           "编辑历史"
         ],
         "summary": "Get Episode Revisions",
-        "operationId": "get_episode_revisions_v0_revisions_episodes_get",
+        "operationId": "getEpisodeRevisions",
         "parameters": [
           {
             "required": true,
@@ -2126,7 +2126,7 @@
           "编辑历史"
         ],
         "summary": "Get Episode Revision",
-        "operationId": "get_episode_revision_v0_revisions_episodes__revision_id__get",
+        "operationId": "getEpisodeRevisionByRevisionId",
         "parameters": [
           {
             "required": true,
@@ -2179,7 +2179,7 @@
           "目录"
         ],
         "summary": "Get Index By Id",
-        "operationId": "get_index_by_id_v0_indices__index_id__get",
+        "operationId": "getIndexById",
         "parameters": [
           {
             "required": true,
@@ -2237,7 +2237,7 @@
           "目录"
         ],
         "summary": "Get Index Subjects",
-        "operationId": "get_index_subjects_v0_indices__index_id__subjects_get",
+        "operationId": "getIndexSubjectsByIndexId",
         "parameters": [
           {
             "required": true,
@@ -3182,6 +3182,80 @@
         "properties": {
           "img": {
             "title": "Image",
+            "type": "string"
+          }
+        }
+      },
+      "SubjectRevision": {
+        "title": "SubjectRevision",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Revision"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "data": {
+                "$ref": "#/components/schemas/SubjectRevisionData"
+              }
+            }
+          }
+        ]
+      },
+      "SubjectRevisionData": {
+        "title": "SubjectRevisionData",
+        "required": [
+          "field_eps",
+          "field_infobox",
+          "field_summary",
+          "name",
+          "name_cn",
+          "platform",
+          "subject_id",
+          "type",
+          "type_id",
+          "vote_field"
+        ],
+        "type": "object",
+        "properties": {
+          "field_eps": {
+            "title": "Field EPs",
+            "type": "integer"
+          },
+          "field_infobox": {
+            "title": "Field Infobox",
+            "type": "string"
+          },
+          "field_summary": {
+            "title": "Field Summary",
+            "type": "string"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "name_cn": {
+            "title": "Name CN",
+            "type": "string"
+          },
+          "platform": {
+            "title": "Platform",
+            "type": "integer"
+          },
+          "subject_id": {
+            "title": "Subject ID",
+            "type": "integer"
+          },
+          "type": {
+            "title": "Type",
+            "type": "integer"
+          },
+          "type_id": {
+            "title": "Type ID",
+            "type": "integer"
+          },
+          "vote_field": {
+            "title": "Vote Field",
             "type": "string"
           }
         }
