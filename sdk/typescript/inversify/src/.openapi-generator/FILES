@@ -68,11 +68,11 @@ model/revision.ts
 model/stat.ts
 model/statusCode.ts
 model/subject.ts
-model/subject1.ts
 model/subjectBase.ts
 model/subjectBaseAllOf.ts
 model/subjectBaseAllOfImages.ts
 model/subjectCollection.ts
+model/subjectLegacy.ts
 model/subjectRevision.ts
 model/subjectRevisionAllOf.ts
 model/subjectRevisionData.ts
@@ -81,14 +81,12 @@ model/subjectSmallAllOf.ts
 model/subjectSmallAllOfRating.ts
 model/subjectSmallAllOfRatingCount.ts
 model/subjectType.ts
-model/subjectType1.ts
 model/subjectTypeName.ts
 model/tag.ts
 model/user.ts
 model/userAvatar.ts
 model/userCollection.ts
 model/userGroup.ts
-model/userGroup1.ts
 model/userUsernameCollectionsStatusCollects.ts
 model/userUsernameCollectionsSubjectTypeCollects.ts
 model/userUsernameCollectionsSubjectTypeList.ts
