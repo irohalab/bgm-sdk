@@ -3,7 +3,7 @@
   "info": {
     "title": "Bangumi API",
     "description": "你可以在 <https://api.bgm.tv/v0/oauth/> 生成一个 Access Token\n\n## 建议客户端开发者指定一个带有 APP 名称和版本的 User Agent，而非使用 HTTP 请求库默认的 UA\n\n各种请求库的默认 UA 在未来可能会被禁用。\n",
-    "version": "2022-04-23",
+    "version": "2022-05-3",
     "contact": {
       "name": "Bangumi API",
       "url": "https://github.com/bangumi/api/"
@@ -15,145 +15,6 @@
     }
   ],
   "paths": {
-    "/user/{username}": {
-      "get": {
-        "tags": [
-          "用户"
-        ],
-        "summary": "用户信息",
-        "operationId": "getUserByUsername",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/username"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "返回用户基础信息",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/User"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/user/{username}/collection": {
-      "get": {
-        "deprecated": true,
-        "tags": [
-          "用户"
-        ],
-        "summary": "用户收藏",
-        "operationId": "getUserCollectionsByUsername",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/username"
-          },
-          {
-            "name": "cat",
-            "in": "query",
-            "description": "收藏类型 <br> watching = 在看的动画与三次元条目 <br> all_watching = 在看的动画三次元与书籍条目",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "enum": [
-                "watching",
-                "all_watching"
-              ]
-            }
-          },
-          {
-            "name": "ids",
-            "in": "query",
-            "description": "收藏条目 ID <br> 批量查询收藏状态，将条目 ID 以半角逗号分隔，如 1,2,4,6",
-            "required": false,
-            "schema": {
-              "type": "string",
-              "example": "1,2,4,6"
-            }
-          },
-          {
-            "name": "responseGroup",
-            "in": "query",
-            "description": "medium / small <br> 默认为 medium。small 时不返回条目详细信息",
-            "required": false,
-            "schema": {
-              "type": "string",
-              "enum": [
-                "small",
-                "medium"
-              ],
-              "default": "medium"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "获取用户收藏列表，默认为在看",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "name": {
-                        "description": "番剧标题",
-                        "type": "string"
-                      },
-                      "subject_id": {
-                        "description": "章节 ID",
-                        "type": "integer"
-                      },
-                      "ep_status": {
-                        "description": "完成话数",
-                        "type": "integer"
-                      },
-                      "vol_status": {
-                        "description": "完成卷数（书籍）"
-                      },
-                      "lasttouch": {
-                        "description": "上次更新时间",
-                        "type": "integer"
-                      },
-                      "subject": {
-                        "allOf": [
-                          {
-                            "$ref": "#/components/schemas/SubjectBase"
-                          },
-                          {
-                            "type": "object",
-                            "properties": {
-                              "eps": {
-                                "description": "话数",
-                                "type": "integer",
-                                "example": 27
-                              },
-                              "eps_count": {
-                                "description": "话数",
-                                "type": "integer",
-                                "example": 27
-                              },
-                              "collection": {
-                                "$ref": "#/components/schemas/SubjectCollection"
-                              }
-                            }
-                          }
-                        ]
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/user/{username}/collections/{subject_type}": {
       "get": {
         "deprecated": true,
@@ -1496,12 +1357,12 @@
           "人物"
         ],
         "summary": "get person related characters",
-        "operationId": "getRelatedPersonsByPersonId",
+        "operationId": "getRelatedCharactersByPersonId",
         "parameters": [
           {
             "required": true,
             "schema": {
-              "title": "Person Id",
+              "title": "Person ID",
               "minimum": 0,
               "type": "integer"
             },
@@ -1547,6 +1408,60 @@
         }
       }
     },
+    "/v0/users/{username}": {
+      "get": {
+        "tags": [
+          "用户"
+        ],
+        "summary": "Get User by name",
+        "description": "获取用户信息，设置了 username 之后无法使用 UID 查询。",
+        "operationId": "getUserByName",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "title": "username",
+              "type": "string",
+              "maxLength": 32
+            },
+            "name": "username",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User1"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "username 太长",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDetail"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "对应用户不存在",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDetail"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v0/me": {
       "get": {
         "tags": [
@@ -1554,14 +1469,14 @@
         ],
         "summary": "Get User",
         "description": "返回当前 Access Token 对应的用户信息",
-        "operationId": "getUser",
+        "operationId": "getMyself",
         "responses": {
           "200": {
             "description": "Successful Response",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Me"
+                  "$ref": "#/components/schemas/User1"
                 }
               }
             }
@@ -1591,7 +1506,7 @@
         ],
         "summary": "获取用户收藏",
         "description": "获取对应用户的收藏，查看私有收藏需要access token。",
-        "operationId": "getUserCollectionsByUsername1",
+        "operationId": "getUserCollectionsByUsername",
         "parameters": [
           {
             "description": "设置了 username 后无法使用UID",
@@ -1907,7 +1822,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DetailedRevision"
+                  "$ref": "#/components/schemas/CharacterRevision"
                 }
               }
             }
@@ -3174,7 +3089,7 @@
             "$ref": "#/components/schemas/PersonRevisionProfession"
           },
           "extra": {
-            "$ref": "#/components/schemas/PersonRevisionExtra"
+            "$ref": "#/components/schemas/RevisionExtra"
           },
           "prsn_name": {
             "title": "Person Name",
@@ -3216,8 +3131,8 @@
           }
         }
       },
-      "PersonRevisionExtra": {
-        "title": "PersonRevisionExtra",
+      "RevisionExtra": {
+        "title": "RevisionExtra",
         "type": "object",
         "properties": {
           "img": {
@@ -3297,6 +3212,52 @@
           "vote_field": {
             "title": "Vote Field",
             "type": "string"
+          }
+        }
+      },
+      "CharacterRevision": {
+        "title": "CharacterRevision",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Revision"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "data": {
+                "title": "Data",
+                "additionalProperties": {
+                  "$ref": "#/components/schemas/CharacterRevisionDataItem"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "CharacterRevisionDataItem": {
+        "title": "CharacterRevisionDataItem",
+        "required": [
+          "infobox",
+          "summary",
+          "name",
+          "extra"
+        ],
+        "type": "object",
+        "properties": {
+          "infobox": {
+            "title": "Character Infobox",
+            "type": "string"
+          },
+          "summary": {
+            "title": "Character Summary",
+            "type": "string"
+          },
+          "name": {
+            "title": "Character Name",
+            "type": "string"
+          },
+          "extra": {
+            "$ref": "#/components/schemas/RevisionExtra"
           }
         }
       },
@@ -3479,8 +3440,7 @@
         "title": "ErrorDetail",
         "required": [
           "title",
-          "description",
-          "detail"
+          "description"
         ],
         "type": "object",
         "properties": {
@@ -3704,8 +3664,21 @@
           }
         }
       },
-      "Me": {
-        "title": "Me",
+      "User1": {
+        "example": {
+          "avatar": {
+            "large": "https://lain.bgm.tv/pic/user/l/000/00/00/1.jpg?r=1391790456",
+            "medium": "https://lain.bgm.tv/pic/user/m/000/00/00/1.jpg?r=1391790456",
+            "small": "https://lain.bgm.tv/pic/user/s/000/00/00/1.jpg?r=1391790456"
+          },
+          "sign": "Awesome!",
+          "url": "https://bgm.tv/user/sai",
+          "username": "sai",
+          "nickname": "Sai🖖",
+          "id": 1,
+          "user_group": 1
+        },
+        "title": "User",
         "required": [
           "id",
           "url",
@@ -3718,17 +3691,17 @@
         "type": "object",
         "properties": {
           "id": {
-            "title": "Id",
+            "title": "ID",
             "type": "integer"
           },
           "url": {
-            "title": "Url",
+            "title": "URL",
             "type": "string"
           },
           "username": {
             "title": "Username",
             "type": "string",
-            "description": "唯一用户名，初始与uid相同，可修改"
+            "description": "唯一用户名，初始与 UID 相同，可修改一次"
           },
           "nickname": {
             "title": "Nickname",
@@ -3742,6 +3715,7 @@
           },
           "sign": {
             "title": "Sign",
+            "description": "个人签名",
             "type": "string"
           }
         }

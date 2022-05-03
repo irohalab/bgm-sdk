@@ -12,6 +12,9 @@ model/bloodType.ts
 model/calendarWeekday.ts
 model/characterDetail.ts
 model/characterPerson.ts
+model/characterRevision.ts
+model/characterRevisionAllOf.ts
+model/characterRevisionDataItem.ts
 model/characterType.ts
 model/collection.ts
 model/collectionStatus.ts
@@ -39,10 +42,8 @@ model/inlineResponse2002.ts
 model/inlineResponse2003.ts
 model/inlineResponse2004.ts
 model/inlineResponse2005.ts
-model/inlineResponse2006.ts
 model/item.ts
 model/kV.ts
-model/me.ts
 model/pagedEpisode.ts
 model/pagedIndexSubject.ts
 model/pagedRevision.ts
@@ -55,7 +56,6 @@ model/personImages.ts
 model/personRevision.ts
 model/personRevisionAllOf.ts
 model/personRevisionDataItem.ts
-model/personRevisionExtra.ts
 model/personRevisionProfession.ts
 model/personType.ts
 model/polApiV0ModelsRelatedSubject.ts
@@ -65,6 +65,7 @@ model/relatedCharacter.ts
 model/relatedPerson.ts
 model/responseGroup.ts
 model/revision.ts
+model/revisionExtra.ts
 model/stat.ts
 model/statusCode.ts
 model/subject.ts
@@ -84,6 +85,7 @@ model/subjectType.ts
 model/subjectTypeName.ts
 model/tag.ts
 model/user.ts
+model/user1.ts
 model/userAvatar.ts
 model/userCollection.ts
 model/userGroup.ts
