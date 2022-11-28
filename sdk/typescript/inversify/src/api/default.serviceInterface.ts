@@ -53,13 +53,13 @@ export interface DefaultServiceInterface {
     /**
     * 批量更新收视进度
     * 
-    * @param subjectId 条目 ID
-    * @param watchedEps 如看到 123 话则 POST &#x60;123&#x60; &lt;br&gt; 书籍条目传 watched_eps 与 watched_vols 至少其一
-    * @param watchedVols 如看到第 3 卷则 POST &#x60;3&#x60;, 仅对书籍条目有效
+    * @param subject_id 条目 ID
+    * @param watched_eps 如看到 123 话则 POST &#x60;123&#x60; &lt;br&gt; 书籍条目传 watched_eps 与 watched_vols 至少其一
+    * @param watched_vols 如看到第 3 卷则 POST &#x60;3&#x60;, 仅对书籍条目有效
     */
 
-    batchUpdateEpisodeStatusBySubjectId(subjectId: number, watchedEps: string, watchedVols?: string, observe?: 'body', headers?: Headers): Observable<StatusCode>;
-    batchUpdateEpisodeStatusBySubjectId(subjectId: number, watchedEps: string, watchedVols?: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<StatusCode>>;
+    batchUpdateEpisodeStatusBySubjectId(subject_id: number, watched_eps: string, watched_vols?: string, observe?: 'body', headers?: Headers): Observable<StatusCode>;
+    batchUpdateEpisodeStatusBySubjectId(subject_id: number, watched_eps: string, watched_vols?: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<StatusCode>>;
     /**
     * 每日放送
     * 
@@ -70,63 +70,63 @@ export interface DefaultServiceInterface {
     /**
     * Get Character Detail
     * cache with 60s
-    * @param characterId 
+    * @param character_id 
     */
 
-    getCharacterById(characterId: number, observe?: 'body', headers?: Headers): Observable<CharacterDetail>;
-    getCharacterById(characterId: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<CharacterDetail>>;
+    getCharacterById(character_id: number, observe?: 'body', headers?: Headers): Observable<CharacterDetail>;
+    getCharacterById(character_id: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<CharacterDetail>>;
     /**
     * Get Character Revision
     * 
-    * @param revisionId 
+    * @param revision_id 
     */
 
-    getCharacterRevisionByRevisionId(revisionId: number, observe?: 'body', headers?: Headers): Observable<CharacterRevision>;
-    getCharacterRevisionByRevisionId(revisionId: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<CharacterRevision>>;
+    getCharacterRevisionByRevisionId(revision_id: number, observe?: 'body', headers?: Headers): Observable<CharacterRevision>;
+    getCharacterRevisionByRevisionId(revision_id: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<CharacterRevision>>;
     /**
     * Get Character Revisions
     * 
-    * @param characterId 
+    * @param character_id 
     * @param limit 
     * @param offset 
     */
 
-    getCharacterRevisions(characterId: number, limit?: number, offset?: number, observe?: 'body', headers?: Headers): Observable<PagedRevision>;
-    getCharacterRevisions(characterId: number, limit?: number, offset?: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<PagedRevision>>;
+    getCharacterRevisions(character_id: number, limit?: number, offset?: number, observe?: 'body', headers?: Headers): Observable<PagedRevision>;
+    getCharacterRevisions(character_id: number, limit?: number, offset?: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<PagedRevision>>;
     /**
     * 获取指定条目收藏信息
     * 
-    * @param subjectId 条目 ID
+    * @param subject_id 条目 ID
     */
 
-    getCollectionBySubjectId(subjectId: number, observe?: 'body', headers?: Headers): Observable<InlineResponse2005>;
-    getCollectionBySubjectId(subjectId: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<InlineResponse2005>>;
+    getCollectionBySubjectId(subject_id: number, observe?: 'body', headers?: Headers): Observable<InlineResponse2005>;
+    getCollectionBySubjectId(subject_id: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<InlineResponse2005>>;
     /**
     * Get Episode
     * 
-    * @param episodeId 
+    * @param episode_id 
     */
 
-    getEpisodeById(episodeId: number, observe?: 'body', headers?: Headers): Observable<EpisodeDetail>;
-    getEpisodeById(episodeId: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<EpisodeDetail>>;
+    getEpisodeById(episode_id: number, observe?: 'body', headers?: Headers): Observable<EpisodeDetail>;
+    getEpisodeById(episode_id: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<EpisodeDetail>>;
     /**
     * Get Episode Revision
     * 
-    * @param revisionId 
+    * @param revision_id 
     */
 
-    getEpisodeRevisionByRevisionId(revisionId: number, observe?: 'body', headers?: Headers): Observable<DetailedRevision>;
-    getEpisodeRevisionByRevisionId(revisionId: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<DetailedRevision>>;
+    getEpisodeRevisionByRevisionId(revision_id: number, observe?: 'body', headers?: Headers): Observable<DetailedRevision>;
+    getEpisodeRevisionByRevisionId(revision_id: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<DetailedRevision>>;
     /**
     * Get Episode Revisions
     * 
-    * @param episodeId 
+    * @param episode_id 
     * @param limit 
     * @param offset 
     */
 
-    getEpisodeRevisions(episodeId: number, limit?: number, offset?: number, observe?: 'body', headers?: Headers): Observable<PagedRevision>;
-    getEpisodeRevisions(episodeId: number, limit?: number, offset?: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<PagedRevision>>;
+    getEpisodeRevisions(episode_id: number, limit?: number, offset?: number, observe?: 'body', headers?: Headers): Observable<PagedRevision>;
+    getEpisodeRevisions(episode_id: number, limit?: number, offset?: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<PagedRevision>>;
     /**
     * 更新收视进度
     * 
@@ -139,33 +139,33 @@ export interface DefaultServiceInterface {
     /**
     * Get Episodes
     * 
-    * @param subjectId 
+    * @param subject_id 
     * @param type 参照章节的&#x60;type&#x60;
     * @param limit 
     * @param offset 
     */
 
-    getEpisodes(subjectId: number, type?: EpType, limit?: number, offset?: number, observe?: 'body', headers?: Headers): Observable<PagedEpisode>;
-    getEpisodes(subjectId: number, type?: EpType, limit?: number, offset?: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<PagedEpisode>>;
+    getEpisodes(subject_id: number, type?: EpType, limit?: number, offset?: number, observe?: 'body', headers?: Headers): Observable<PagedEpisode>;
+    getEpisodes(subject_id: number, type?: EpType, limit?: number, offset?: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<PagedEpisode>>;
     /**
     * Get Index By Id
     * 
-    * @param indexId 
+    * @param index_id 
     */
 
-    getIndexById(indexId: number, observe?: 'body', headers?: Headers): Observable<Index>;
-    getIndexById(indexId: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<Index>>;
+    getIndexById(index_id: number, observe?: 'body', headers?: Headers): Observable<Index>;
+    getIndexById(index_id: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<Index>>;
     /**
     * Get Index Subjects
     * 
-    * @param indexId 
+    * @param index_id 
     * @param type 
     * @param limit 
     * @param offset 
     */
 
-    getIndexSubjectsByIndexId(indexId: number, type?: SubjectType, limit?: number, offset?: number, observe?: 'body', headers?: Headers): Observable<PagedIndexSubject>;
-    getIndexSubjectsByIndexId(indexId: number, type?: SubjectType, limit?: number, offset?: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<PagedIndexSubject>>;
+    getIndexSubjectsByIndexId(index_id: number, type?: SubjectType, limit?: number, offset?: number, observe?: 'body', headers?: Headers): Observable<PagedIndexSubject>;
+    getIndexSubjectsByIndexId(index_id: number, type?: SubjectType, limit?: number, offset?: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<PagedIndexSubject>>;
     /**
     * Get User
     * 返回当前 Access Token 对应的用户信息
@@ -176,111 +176,111 @@ export interface DefaultServiceInterface {
     /**
     * Get Person
     * cache with 60s
-    * @param personId 
+    * @param person_id 
     */
 
-    getPersonById(personId: number, observe?: 'body', headers?: Headers): Observable<PersonDetail>;
-    getPersonById(personId: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<PersonDetail>>;
+    getPersonById(person_id: number, observe?: 'body', headers?: Headers): Observable<PersonDetail>;
+    getPersonById(person_id: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<PersonDetail>>;
     /**
     * Get Person Revision
     * 
-    * @param revisionId 
+    * @param revision_id 
     */
 
-    getPersonRevisionByRevisionId(revisionId: number, observe?: 'body', headers?: Headers): Observable<PersonRevision>;
-    getPersonRevisionByRevisionId(revisionId: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<PersonRevision>>;
+    getPersonRevisionByRevisionId(revision_id: number, observe?: 'body', headers?: Headers): Observable<PersonRevision>;
+    getPersonRevisionByRevisionId(revision_id: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<PersonRevision>>;
     /**
     * Get Person Revisions
     * 
-    * @param personId 
+    * @param person_id 
     * @param limit 
     * @param offset 
     */
 
-    getPersonRevisions(personId: number, limit?: number, offset?: number, observe?: 'body', headers?: Headers): Observable<PagedRevision>;
-    getPersonRevisions(personId: number, limit?: number, offset?: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<PagedRevision>>;
+    getPersonRevisions(person_id: number, limit?: number, offset?: number, observe?: 'body', headers?: Headers): Observable<PagedRevision>;
+    getPersonRevisions(person_id: number, limit?: number, offset?: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<PagedRevision>>;
     /**
     * get person related characters
     * 
-    * @param personId 
+    * @param person_id 
     */
 
-    getRelatedCharactersByPersonId(personId: number, observe?: 'body', headers?: Headers): Observable<Array<PersonCharacter>>;
-    getRelatedCharactersByPersonId(personId: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<Array<PersonCharacter>>>;
+    getRelatedCharactersByPersonId(person_id: number, observe?: 'body', headers?: Headers): Observable<Array<PersonCharacter>>;
+    getRelatedCharactersByPersonId(person_id: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<Array<PersonCharacter>>>;
     /**
     * Get Subject Characters
     * 
-    * @param subjectId 
+    * @param subject_id 
     */
 
-    getRelatedCharactersBySubjectId(subjectId: number, observe?: 'body', headers?: Headers): Observable<Array<RelatedCharacter>>;
-    getRelatedCharactersBySubjectId(subjectId: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<Array<RelatedCharacter>>>;
+    getRelatedCharactersBySubjectId(subject_id: number, observe?: 'body', headers?: Headers): Observable<Array<RelatedCharacter>>;
+    getRelatedCharactersBySubjectId(subject_id: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<Array<RelatedCharacter>>>;
     /**
     * get character related persons
     * 
-    * @param characterId 
+    * @param character_id 
     */
 
-    getRelatedPersonsByCharacterId(characterId: number, observe?: 'body', headers?: Headers): Observable<Array<CharacterPerson>>;
-    getRelatedPersonsByCharacterId(characterId: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<Array<CharacterPerson>>>;
+    getRelatedPersonsByCharacterId(character_id: number, observe?: 'body', headers?: Headers): Observable<Array<CharacterPerson>>;
+    getRelatedPersonsByCharacterId(character_id: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<Array<CharacterPerson>>>;
     /**
     * Get Subject Persons
     * 
-    * @param subjectId 
+    * @param subject_id 
     */
 
-    getRelatedPersonsBySubjectId(subjectId: number, observe?: 'body', headers?: Headers): Observable<Array<RelatedPerson>>;
-    getRelatedPersonsBySubjectId(subjectId: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<Array<RelatedPerson>>>;
+    getRelatedPersonsBySubjectId(subject_id: number, observe?: 'body', headers?: Headers): Observable<Array<RelatedPerson>>;
+    getRelatedPersonsBySubjectId(subject_id: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<Array<RelatedPerson>>>;
     /**
     * get character related subjects
     * 
-    * @param characterId 
+    * @param character_id 
     */
 
-    getRelatedSubjectsByCharacterId(characterId: number, observe?: 'body', headers?: Headers): Observable<Array<PolApiV0ModelsRelatedSubject>>;
-    getRelatedSubjectsByCharacterId(characterId: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<Array<PolApiV0ModelsRelatedSubject>>>;
+    getRelatedSubjectsByCharacterId(character_id: number, observe?: 'body', headers?: Headers): Observable<Array<PolApiV0ModelsRelatedSubject>>;
+    getRelatedSubjectsByCharacterId(character_id: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<Array<PolApiV0ModelsRelatedSubject>>>;
     /**
     * get person related subjects
     * 
-    * @param personId 
+    * @param person_id 
     */
 
-    getRelatedSubjectsByPersonId(personId: number, observe?: 'body', headers?: Headers): Observable<Array<PolApiV0ModelsRelatedSubject>>;
-    getRelatedSubjectsByPersonId(personId: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<Array<PolApiV0ModelsRelatedSubject>>>;
+    getRelatedSubjectsByPersonId(person_id: number, observe?: 'body', headers?: Headers): Observable<Array<PolApiV0ModelsRelatedSubject>>;
+    getRelatedSubjectsByPersonId(person_id: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<Array<PolApiV0ModelsRelatedSubject>>>;
     /**
     * Get Subject Relations
     * 
-    * @param subjectId 
+    * @param subject_id 
     */
 
-    getRelatedSubjectsBySubjectId(subjectId: number, observe?: 'body', headers?: Headers): Observable<Array<PolApiV0ModelsSubjectRelatedSubject>>;
-    getRelatedSubjectsBySubjectId(subjectId: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<Array<PolApiV0ModelsSubjectRelatedSubject>>>;
+    getRelatedSubjectsBySubjectId(subject_id: number, observe?: 'body', headers?: Headers): Observable<Array<PolApiV0ModelsSubjectRelatedSubject>>;
+    getRelatedSubjectsBySubjectId(subject_id: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<Array<PolApiV0ModelsSubjectRelatedSubject>>>;
     /**
     * 获取条目
     * cache with 300s
-    * @param subjectId 
+    * @param subject_id 
     */
 
-    getSubjectById(subjectId: number, observe?: 'body', headers?: Headers): Observable<Subject>;
-    getSubjectById(subjectId: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<Subject>>;
+    getSubjectById(subject_id: number, observe?: 'body', headers?: Headers): Observable<Subject>;
+    getSubjectById(subject_id: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<Subject>>;
     /**
     * Get Subject Revision
     * 
-    * @param revisionId 
+    * @param revision_id 
     */
 
-    getSubjectRevisionByRevisionId(revisionId: number, observe?: 'body', headers?: Headers): Observable<SubjectRevision>;
-    getSubjectRevisionByRevisionId(revisionId: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<SubjectRevision>>;
+    getSubjectRevisionByRevisionId(revision_id: number, observe?: 'body', headers?: Headers): Observable<SubjectRevision>;
+    getSubjectRevisionByRevisionId(revision_id: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<SubjectRevision>>;
     /**
     * Get Subject Revisions
     * 
-    * @param subjectId 
+    * @param subject_id 
     * @param limit 
     * @param offset 
     */
 
-    getSubjectRevisions(subjectId: number, limit?: number, offset?: number, observe?: 'body', headers?: Headers): Observable<PagedRevision>;
-    getSubjectRevisions(subjectId: number, limit?: number, offset?: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<PagedRevision>>;
+    getSubjectRevisions(subject_id: number, limit?: number, offset?: number, observe?: 'body', headers?: Headers): Observable<PagedRevision>;
+    getSubjectRevisions(subject_id: number, limit?: number, offset?: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<PagedRevision>>;
     /**
     * Get User by name
     * 获取用户信息，设置了 username 之后无法使用 UID 查询。
@@ -293,43 +293,43 @@ export interface DefaultServiceInterface {
     * 用户收藏统计
     * 
     * @param username 用户名 &lt;br&gt; 也可使用 UID
-    * @param appId [https://bgm.tv/dev/app](https://bgm.tv/dev/app) 申请到的 App ID
+    * @param app_id [https://bgm.tv/dev/app](https://bgm.tv/dev/app) 申请到的 App ID
     */
 
-    getUserCollectionStatusByUsername(username: string, appId: string, observe?: 'body', headers?: Headers): Observable<Array<InlineResponse2001>>;
-    getUserCollectionStatusByUsername(username: string, appId: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<Array<InlineResponse2001>>>;
+    getUserCollectionStatusByUsername(username: string, app_id: string, observe?: 'body', headers?: Headers): Observable<Array<InlineResponse2001>>;
+    getUserCollectionStatusByUsername(username: string, app_id: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<Array<InlineResponse2001>>>;
     /**
     * 用户收藏概览
     * 
     * @param username 用户名 &lt;br&gt; 也可使用 UID
-    * @param subjectType 条目类型，详见 [SubjectTypeName](#model-SubjectTypeName)
-    * @param appId [https://bgm.tv/dev/app](https://bgm.tv/dev/app) 申请到的 App ID
-    * @param maxResults 显示条数 &lt;br&gt; 最多 25
+    * @param subject_type 条目类型，详见 [SubjectTypeName](#model-SubjectTypeName)
+    * @param app_id [https://bgm.tv/dev/app](https://bgm.tv/dev/app) 申请到的 App ID
+    * @param max_results 显示条数 &lt;br&gt; 最多 25
     */
 
-    getUserCollectionsBySubjectType(username: string, subjectType: SubjectTypeName, appId: string, maxResults?: number, observe?: 'body', headers?: Headers): Observable<Array<InlineResponse200>>;
-    getUserCollectionsBySubjectType(username: string, subjectType: SubjectTypeName, appId: string, maxResults?: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<Array<InlineResponse200>>>;
+    getUserCollectionsBySubjectType(username: string, subject_type: SubjectTypeName, app_id: string, max_results?: number, observe?: 'body', headers?: Headers): Observable<Array<InlineResponse200>>;
+    getUserCollectionsBySubjectType(username: string, subject_type: SubjectTypeName, app_id: string, max_results?: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<Array<InlineResponse200>>>;
     /**
     * 获取用户收藏
     * 获取对应用户的收藏，查看私有收藏需要access token。
     * @param username 设置了 username 后无法使用UID
-    * @param subjectType 条目类型，默认为全部  具体含义见 [SubjectType](#model-SubjectType)
+    * @param subject_type 条目类型，默认为全部  具体含义见 [SubjectType](#model-SubjectType)
     * @param type 收藏类型，默认为全部  具体含义见 [CollectionType](#model-CollectionType)
     * @param limit 
     * @param offset 
     */
 
-    getUserCollectionsByUsername(username: string, subjectType?: SubjectType, type?: CollectionType, limit?: number, offset?: number, observe?: 'body', headers?: Headers): Observable<PagedUserCollection>;
-    getUserCollectionsByUsername(username: string, subjectType?: SubjectType, type?: CollectionType, limit?: number, offset?: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<PagedUserCollection>>;
+    getUserCollectionsByUsername(username: string, subject_type?: SubjectType, type?: CollectionType, limit?: number, offset?: number, observe?: 'body', headers?: Headers): Observable<PagedUserCollection>;
+    getUserCollectionsByUsername(username: string, subject_type?: SubjectType, type?: CollectionType, limit?: number, offset?: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<PagedUserCollection>>;
     /**
     * 用户收视进度
     * 
     * @param username 用户名 &lt;br&gt; 也可使用 UID
-    * @param subjectId 条目 ID &lt;br&gt; 获取指定条目收视进度
+    * @param subject_id 条目 ID &lt;br&gt; 获取指定条目收视进度
     */
 
-    getUserProgressByUsername(username: string, subjectId?: number, observe?: 'body', headers?: Headers): Observable<Array<InlineResponse2002>>;
-    getUserProgressByUsername(username: string, subjectId?: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<Array<InlineResponse2002>>>;
+    getUserProgressByUsername(username: string, subject_id?: number, observe?: 'body', headers?: Headers): Observable<Array<InlineResponse2002>>;
+    getUserProgressByUsername(username: string, subject_id?: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<Array<InlineResponse2002>>>;
     /**
     * 条目搜索
     * 
@@ -337,15 +337,15 @@ export interface DefaultServiceInterface {
     * @param type 条目类型，参考 [SubjectType](#model-SubjectType)
     * @param responseGroup 返回数据大小，参考 [ResponseGroup](#model-ResponseGroup) &lt;br&gt; 默认为 small
     * @param start 开始条数
-    * @param maxResults 每页条数 &lt;br&gt; 最多 25
+    * @param max_results 每页条数 &lt;br&gt; 最多 25
     */
 
-    searchSubjectByKeywords(keywords: string, type?: SubjectType, responseGroup?: ResponseGroup, start?: number, maxResults?: number, observe?: 'body', headers?: Headers): Observable<InlineResponse2004>;
-    searchSubjectByKeywords(keywords: string, type?: SubjectType, responseGroup?: ResponseGroup, start?: number, maxResults?: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<InlineResponse2004>>;
+    searchSubjectByKeywords(keywords: string, type?: SubjectType, responseGroup?: ResponseGroup, start?: number, max_results?: number, observe?: 'body', headers?: Headers): Observable<InlineResponse2004>;
+    searchSubjectByKeywords(keywords: string, type?: SubjectType, responseGroup?: ResponseGroup, start?: number, max_results?: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<InlineResponse2004>>;
     /**
     * 管理收藏
     * 管理收藏。Content-type必须为multipart/form-data或application/x-www-form-urlencoded，参数都得放在body里。
-    * @param subjectId 条目 ID
+    * @param subject_id 条目 ID
     * @param action 收藏动作 &lt;br&gt; create &#x3D; 添加收藏 &lt;br&gt; update &#x3D; 更新收藏 &lt;br&gt; 可以统一使用 &#x60;update&#x60;，系统会自动判断需要新建还是更新收藏
     * @param status 
     * @param comment 简评
@@ -354,16 +354,16 @@ export interface DefaultServiceInterface {
     * @param privacy 收藏隐私 &lt;br&gt; 0 &#x3D; 公开 &lt;br&gt; 1 &#x3D; 私密 &lt;br&gt; 不填默认为0
     */
 
-    updateCollectionBySubjectIdWithAction(subjectId: number, action: 'create' | 'update', status: CollectionStatusType, comment?: string, tags?: string, rating?: number, privacy?: number, observe?: 'body', headers?: Headers): Observable<InlineResponse2005>;
-    updateCollectionBySubjectIdWithAction(subjectId: number, action: 'create' | 'update', status: CollectionStatusType, comment?: string, tags?: string, rating?: number, privacy?: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<InlineResponse2005>>;
+    updateCollectionBySubjectIdWithAction(subject_id: number, action: 'create' | 'update', status: CollectionStatusType, comment?: string, tags?: string, rating?: number, privacy?: number, observe?: 'body', headers?: Headers): Observable<InlineResponse2005>;
+    updateCollectionBySubjectIdWithAction(subject_id: number, action: 'create' | 'update', status: CollectionStatusType, comment?: string, tags?: string, rating?: number, privacy?: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<InlineResponse2005>>;
     /**
     * 更新收视进度
     * 
     * @param id 章节 ID
     * @param status 收视类型，参考 [EpStatusType](#model-EpStatusType)
-    * @param epId 使用 POST 批量更新 &lt;br&gt; 将章节以半角逗号分隔，如 &#x60;3697,3698,3699&#x60;。请求时 URL 中的 ep_id 为最后一个章节 ID
+    * @param ep_id 使用 POST 批量更新 &lt;br&gt; 将章节以半角逗号分隔，如 &#x60;3697,3698,3699&#x60;。请求时 URL 中的 ep_id 为最后一个章节 ID
     */
 
-    updateEpisodeStatus(id: number, status: EpStatusType, epId?: string, observe?: 'body', headers?: Headers): Observable<StatusCode>;
-    updateEpisodeStatus(id: number, status: EpStatusType, epId?: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<StatusCode>>;
+    updateEpisodeStatus(id: number, status: EpStatusType, ep_id?: string, observe?: 'body', headers?: Headers): Observable<StatusCode>;
+    updateEpisodeStatus(id: number, status: EpStatusType, ep_id?: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<StatusCode>>;
 }

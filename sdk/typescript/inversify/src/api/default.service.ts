@@ -74,28 +74,28 @@ export class DefaultService implements DefaultServiceInterface {
     /**
      * 批量更新收视进度
      * 
-     * @param subjectId 条目 ID
-     * @param watchedEps 如看到 123 话则 POST &#x60;123&#x60; &lt;br&gt; 书籍条目传 watched_eps 与 watched_vols 至少其一
-     * @param watchedVols 如看到第 3 卷则 POST &#x60;3&#x60;, 仅对书籍条目有效
+     * @param subject_id 条目 ID
+     * @param watched_eps 如看到 123 话则 POST &#x60;123&#x60; &lt;br&gt; 书籍条目传 watched_eps 与 watched_vols 至少其一
+     * @param watched_vols 如看到第 3 卷则 POST &#x60;3&#x60;, 仅对书籍条目有效
      
      */
-    public batchUpdateEpisodeStatusBySubjectId(subjectId: number, watchedEps: string, watchedVols?: string, observe?: 'body', headers?: Headers): Observable<StatusCode>;
-    public batchUpdateEpisodeStatusBySubjectId(subjectId: number, watchedEps: string, watchedVols?: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<StatusCode>>;
-    public batchUpdateEpisodeStatusBySubjectId(subjectId: number, watchedEps: string, watchedVols?: string, observe: any = 'body', headers: Headers = {}): Observable<any> {
-        if (subjectId === null || subjectId === undefined){
-            throw new Error('Required parameter subjectId was null or undefined when calling batchUpdateEpisodeStatusBySubjectId.');
+    public batchUpdateEpisodeStatusBySubjectId(subject_id: number, watched_eps: string, watched_vols?: string, observe?: 'body', headers?: Headers): Observable<StatusCode>;
+    public batchUpdateEpisodeStatusBySubjectId(subject_id: number, watched_eps: string, watched_vols?: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<StatusCode>>;
+    public batchUpdateEpisodeStatusBySubjectId(subject_id: number, watched_eps: string, watched_vols?: string, observe: any = 'body', headers: Headers = {}): Observable<any> {
+        if (subject_id === null || subject_id === undefined){
+            throw new Error('Required parameter subject_id was null or undefined when calling batchUpdateEpisodeStatusBySubjectId.');
         }
 
-        if (watchedEps === null || watchedEps === undefined){
-            throw new Error('Required parameter watchedEps was null or undefined when calling batchUpdateEpisodeStatusBySubjectId.');
+        if (watched_eps === null || watched_eps === undefined){
+            throw new Error('Required parameter watched_eps was null or undefined when calling batchUpdateEpisodeStatusBySubjectId.');
         }
 
         let queryParameters: string[] = [];
-        if (watchedEps !== undefined) {
-            queryParameters.push('watchedEps='+encodeURIComponent(String(watchedEps)));
+        if (watched_eps !== undefined) {
+            queryParameters.push('watched_eps='+encodeURIComponent(String(watched_eps)));
         }
-        if (watchedVols !== undefined) {
-            queryParameters.push('watchedVols='+encodeURIComponent(String(watchedVols)));
+        if (watched_vols !== undefined) {
+            queryParameters.push('watched_vols='+encodeURIComponent(String(watched_vols)));
         }
 
         // authentication (HTTPBearer) required
@@ -104,7 +104,7 @@ export class DefaultService implements DefaultServiceInterface {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<StatusCode>> = this.httpClient.post(`${this.basePath}/subject/${encodeURIComponent(String(subjectId))}/update/watched_eps?${queryParameters.join('&')}`, headers);
+        const response: Observable<HttpResponse<StatusCode>> = this.httpClient.post(`${this.basePath}/subject/${encodeURIComponent(String(subject_id))}/update/watched_eps?${queryParameters.join('&')}`, headers);
         if (observe === 'body') {
                return response.pipe(
                    map((httpResponse: HttpResponse) => <StatusCode>(httpResponse.response))
@@ -137,19 +137,19 @@ export class DefaultService implements DefaultServiceInterface {
     /**
      * Get Character Detail
      * cache with 60s
-     * @param characterId 
+     * @param character_id 
      
      */
-    public getCharacterById(characterId: number, observe?: 'body', headers?: Headers): Observable<CharacterDetail>;
-    public getCharacterById(characterId: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<CharacterDetail>>;
-    public getCharacterById(characterId: number, observe: any = 'body', headers: Headers = {}): Observable<any> {
-        if (characterId === null || characterId === undefined){
-            throw new Error('Required parameter characterId was null or undefined when calling getCharacterById.');
+    public getCharacterById(character_id: number, observe?: 'body', headers?: Headers): Observable<CharacterDetail>;
+    public getCharacterById(character_id: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<CharacterDetail>>;
+    public getCharacterById(character_id: number, observe: any = 'body', headers: Headers = {}): Observable<any> {
+        if (character_id === null || character_id === undefined){
+            throw new Error('Required parameter character_id was null or undefined when calling getCharacterById.');
         }
 
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<CharacterDetail>> = this.httpClient.get(`${this.basePath}/v0/characters/${encodeURIComponent(String(characterId))}`, headers);
+        const response: Observable<HttpResponse<CharacterDetail>> = this.httpClient.get(`${this.basePath}/v0/characters/${encodeURIComponent(String(character_id))}`, headers);
         if (observe === 'body') {
                return response.pipe(
                    map((httpResponse: HttpResponse) => <CharacterDetail>(httpResponse.response))
@@ -162,19 +162,19 @@ export class DefaultService implements DefaultServiceInterface {
     /**
      * Get Character Revision
      * 
-     * @param revisionId 
+     * @param revision_id 
      
      */
-    public getCharacterRevisionByRevisionId(revisionId: number, observe?: 'body', headers?: Headers): Observable<CharacterRevision>;
-    public getCharacterRevisionByRevisionId(revisionId: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<CharacterRevision>>;
-    public getCharacterRevisionByRevisionId(revisionId: number, observe: any = 'body', headers: Headers = {}): Observable<any> {
-        if (revisionId === null || revisionId === undefined){
-            throw new Error('Required parameter revisionId was null or undefined when calling getCharacterRevisionByRevisionId.');
+    public getCharacterRevisionByRevisionId(revision_id: number, observe?: 'body', headers?: Headers): Observable<CharacterRevision>;
+    public getCharacterRevisionByRevisionId(revision_id: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<CharacterRevision>>;
+    public getCharacterRevisionByRevisionId(revision_id: number, observe: any = 'body', headers: Headers = {}): Observable<any> {
+        if (revision_id === null || revision_id === undefined){
+            throw new Error('Required parameter revision_id was null or undefined when calling getCharacterRevisionByRevisionId.');
         }
 
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<CharacterRevision>> = this.httpClient.get(`${this.basePath}/v0/revisions/characters/${encodeURIComponent(String(revisionId))}`, headers);
+        const response: Observable<HttpResponse<CharacterRevision>> = this.httpClient.get(`${this.basePath}/v0/revisions/characters/${encodeURIComponent(String(revision_id))}`, headers);
         if (observe === 'body') {
                return response.pipe(
                    map((httpResponse: HttpResponse) => <CharacterRevision>(httpResponse.response))
@@ -187,21 +187,21 @@ export class DefaultService implements DefaultServiceInterface {
     /**
      * Get Character Revisions
      * 
-     * @param characterId 
+     * @param character_id 
      * @param limit 
      * @param offset 
      
      */
-    public getCharacterRevisions(characterId: number, limit?: number, offset?: number, observe?: 'body', headers?: Headers): Observable<PagedRevision>;
-    public getCharacterRevisions(characterId: number, limit?: number, offset?: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<PagedRevision>>;
-    public getCharacterRevisions(characterId: number, limit?: number, offset?: number, observe: any = 'body', headers: Headers = {}): Observable<any> {
-        if (characterId === null || characterId === undefined){
-            throw new Error('Required parameter characterId was null or undefined when calling getCharacterRevisions.');
+    public getCharacterRevisions(character_id: number, limit?: number, offset?: number, observe?: 'body', headers?: Headers): Observable<PagedRevision>;
+    public getCharacterRevisions(character_id: number, limit?: number, offset?: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<PagedRevision>>;
+    public getCharacterRevisions(character_id: number, limit?: number, offset?: number, observe: any = 'body', headers: Headers = {}): Observable<any> {
+        if (character_id === null || character_id === undefined){
+            throw new Error('Required parameter character_id was null or undefined when calling getCharacterRevisions.');
         }
 
         let queryParameters: string[] = [];
-        if (characterId !== undefined) {
-            queryParameters.push('characterId='+encodeURIComponent(String(characterId)));
+        if (character_id !== undefined) {
+            queryParameters.push('character_id='+encodeURIComponent(String(character_id)));
         }
         if (limit !== undefined) {
             queryParameters.push('limit='+encodeURIComponent(String(limit)));
@@ -225,14 +225,14 @@ export class DefaultService implements DefaultServiceInterface {
     /**
      * 获取指定条目收藏信息
      * 
-     * @param subjectId 条目 ID
+     * @param subject_id 条目 ID
      
      */
-    public getCollectionBySubjectId(subjectId: number, observe?: 'body', headers?: Headers): Observable<InlineResponse2005>;
-    public getCollectionBySubjectId(subjectId: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<InlineResponse2005>>;
-    public getCollectionBySubjectId(subjectId: number, observe: any = 'body', headers: Headers = {}): Observable<any> {
-        if (subjectId === null || subjectId === undefined){
-            throw new Error('Required parameter subjectId was null or undefined when calling getCollectionBySubjectId.');
+    public getCollectionBySubjectId(subject_id: number, observe?: 'body', headers?: Headers): Observable<InlineResponse2005>;
+    public getCollectionBySubjectId(subject_id: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<InlineResponse2005>>;
+    public getCollectionBySubjectId(subject_id: number, observe: any = 'body', headers: Headers = {}): Observable<any> {
+        if (subject_id === null || subject_id === undefined){
+            throw new Error('Required parameter subject_id was null or undefined when calling getCollectionBySubjectId.');
         }
 
         // authentication (OptionalHTTPBearer) required
@@ -241,7 +241,7 @@ export class DefaultService implements DefaultServiceInterface {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<InlineResponse2005>> = this.httpClient.get(`${this.basePath}/collection/${encodeURIComponent(String(subjectId))}`, headers);
+        const response: Observable<HttpResponse<InlineResponse2005>> = this.httpClient.get(`${this.basePath}/collection/${encodeURIComponent(String(subject_id))}`, headers);
         if (observe === 'body') {
                return response.pipe(
                    map((httpResponse: HttpResponse) => <InlineResponse2005>(httpResponse.response))
@@ -254,14 +254,14 @@ export class DefaultService implements DefaultServiceInterface {
     /**
      * Get Episode
      * 
-     * @param episodeId 
+     * @param episode_id 
      
      */
-    public getEpisodeById(episodeId: number, observe?: 'body', headers?: Headers): Observable<EpisodeDetail>;
-    public getEpisodeById(episodeId: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<EpisodeDetail>>;
-    public getEpisodeById(episodeId: number, observe: any = 'body', headers: Headers = {}): Observable<any> {
-        if (episodeId === null || episodeId === undefined){
-            throw new Error('Required parameter episodeId was null or undefined when calling getEpisodeById.');
+    public getEpisodeById(episode_id: number, observe?: 'body', headers?: Headers): Observable<EpisodeDetail>;
+    public getEpisodeById(episode_id: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<EpisodeDetail>>;
+    public getEpisodeById(episode_id: number, observe: any = 'body', headers: Headers = {}): Observable<any> {
+        if (episode_id === null || episode_id === undefined){
+            throw new Error('Required parameter episode_id was null or undefined when calling getEpisodeById.');
         }
 
         // authentication (OptionalHTTPBearer) required
@@ -270,7 +270,7 @@ export class DefaultService implements DefaultServiceInterface {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<EpisodeDetail>> = this.httpClient.get(`${this.basePath}/v0/episodes/${encodeURIComponent(String(episodeId))}`, headers);
+        const response: Observable<HttpResponse<EpisodeDetail>> = this.httpClient.get(`${this.basePath}/v0/episodes/${encodeURIComponent(String(episode_id))}`, headers);
         if (observe === 'body') {
                return response.pipe(
                    map((httpResponse: HttpResponse) => <EpisodeDetail>(httpResponse.response))
@@ -283,19 +283,19 @@ export class DefaultService implements DefaultServiceInterface {
     /**
      * Get Episode Revision
      * 
-     * @param revisionId 
+     * @param revision_id 
      
      */
-    public getEpisodeRevisionByRevisionId(revisionId: number, observe?: 'body', headers?: Headers): Observable<DetailedRevision>;
-    public getEpisodeRevisionByRevisionId(revisionId: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<DetailedRevision>>;
-    public getEpisodeRevisionByRevisionId(revisionId: number, observe: any = 'body', headers: Headers = {}): Observable<any> {
-        if (revisionId === null || revisionId === undefined){
-            throw new Error('Required parameter revisionId was null or undefined when calling getEpisodeRevisionByRevisionId.');
+    public getEpisodeRevisionByRevisionId(revision_id: number, observe?: 'body', headers?: Headers): Observable<DetailedRevision>;
+    public getEpisodeRevisionByRevisionId(revision_id: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<DetailedRevision>>;
+    public getEpisodeRevisionByRevisionId(revision_id: number, observe: any = 'body', headers: Headers = {}): Observable<any> {
+        if (revision_id === null || revision_id === undefined){
+            throw new Error('Required parameter revision_id was null or undefined when calling getEpisodeRevisionByRevisionId.');
         }
 
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<DetailedRevision>> = this.httpClient.get(`${this.basePath}/v0/revisions/episodes/${encodeURIComponent(String(revisionId))}`, headers);
+        const response: Observable<HttpResponse<DetailedRevision>> = this.httpClient.get(`${this.basePath}/v0/revisions/episodes/${encodeURIComponent(String(revision_id))}`, headers);
         if (observe === 'body') {
                return response.pipe(
                    map((httpResponse: HttpResponse) => <DetailedRevision>(httpResponse.response))
@@ -308,21 +308,21 @@ export class DefaultService implements DefaultServiceInterface {
     /**
      * Get Episode Revisions
      * 
-     * @param episodeId 
+     * @param episode_id 
      * @param limit 
      * @param offset 
      
      */
-    public getEpisodeRevisions(episodeId: number, limit?: number, offset?: number, observe?: 'body', headers?: Headers): Observable<PagedRevision>;
-    public getEpisodeRevisions(episodeId: number, limit?: number, offset?: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<PagedRevision>>;
-    public getEpisodeRevisions(episodeId: number, limit?: number, offset?: number, observe: any = 'body', headers: Headers = {}): Observable<any> {
-        if (episodeId === null || episodeId === undefined){
-            throw new Error('Required parameter episodeId was null or undefined when calling getEpisodeRevisions.');
+    public getEpisodeRevisions(episode_id: number, limit?: number, offset?: number, observe?: 'body', headers?: Headers): Observable<PagedRevision>;
+    public getEpisodeRevisions(episode_id: number, limit?: number, offset?: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<PagedRevision>>;
+    public getEpisodeRevisions(episode_id: number, limit?: number, offset?: number, observe: any = 'body', headers: Headers = {}): Observable<any> {
+        if (episode_id === null || episode_id === undefined){
+            throw new Error('Required parameter episode_id was null or undefined when calling getEpisodeRevisions.');
         }
 
         let queryParameters: string[] = [];
-        if (episodeId !== undefined) {
-            queryParameters.push('episodeId='+encodeURIComponent(String(episodeId)));
+        if (episode_id !== undefined) {
+            queryParameters.push('episode_id='+encodeURIComponent(String(episode_id)));
         }
         if (limit !== undefined) {
             queryParameters.push('limit='+encodeURIComponent(String(limit)));
@@ -380,22 +380,22 @@ export class DefaultService implements DefaultServiceInterface {
     /**
      * Get Episodes
      * 
-     * @param subjectId 
+     * @param subject_id 
      * @param type 参照章节的&#x60;type&#x60;
      * @param limit 
      * @param offset 
      
      */
-    public getEpisodes(subjectId: number, type?: EpType, limit?: number, offset?: number, observe?: 'body', headers?: Headers): Observable<PagedEpisode>;
-    public getEpisodes(subjectId: number, type?: EpType, limit?: number, offset?: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<PagedEpisode>>;
-    public getEpisodes(subjectId: number, type?: EpType, limit?: number, offset?: number, observe: any = 'body', headers: Headers = {}): Observable<any> {
-        if (subjectId === null || subjectId === undefined){
-            throw new Error('Required parameter subjectId was null or undefined when calling getEpisodes.');
+    public getEpisodes(subject_id: number, type?: EpType, limit?: number, offset?: number, observe?: 'body', headers?: Headers): Observable<PagedEpisode>;
+    public getEpisodes(subject_id: number, type?: EpType, limit?: number, offset?: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<PagedEpisode>>;
+    public getEpisodes(subject_id: number, type?: EpType, limit?: number, offset?: number, observe: any = 'body', headers: Headers = {}): Observable<any> {
+        if (subject_id === null || subject_id === undefined){
+            throw new Error('Required parameter subject_id was null or undefined when calling getEpisodes.');
         }
 
         let queryParameters: string[] = [];
-        if (subjectId !== undefined) {
-            queryParameters.push('subjectId='+encodeURIComponent(String(subjectId)));
+        if (subject_id !== undefined) {
+            queryParameters.push('subject_id='+encodeURIComponent(String(subject_id)));
         }
         if (type !== undefined) {
             queryParameters.push('type='+encodeURIComponent(String(type)));
@@ -426,14 +426,14 @@ export class DefaultService implements DefaultServiceInterface {
     /**
      * Get Index By Id
      * 
-     * @param indexId 
+     * @param index_id 
      
      */
-    public getIndexById(indexId: number, observe?: 'body', headers?: Headers): Observable<Index>;
-    public getIndexById(indexId: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<Index>>;
-    public getIndexById(indexId: number, observe: any = 'body', headers: Headers = {}): Observable<any> {
-        if (indexId === null || indexId === undefined){
-            throw new Error('Required parameter indexId was null or undefined when calling getIndexById.');
+    public getIndexById(index_id: number, observe?: 'body', headers?: Headers): Observable<Index>;
+    public getIndexById(index_id: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<Index>>;
+    public getIndexById(index_id: number, observe: any = 'body', headers: Headers = {}): Observable<any> {
+        if (index_id === null || index_id === undefined){
+            throw new Error('Required parameter index_id was null or undefined when calling getIndexById.');
         }
 
         // authentication (OptionalHTTPBearer) required
@@ -442,7 +442,7 @@ export class DefaultService implements DefaultServiceInterface {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<Index>> = this.httpClient.get(`${this.basePath}/v0/indices/${encodeURIComponent(String(indexId))}`, headers);
+        const response: Observable<HttpResponse<Index>> = this.httpClient.get(`${this.basePath}/v0/indices/${encodeURIComponent(String(index_id))}`, headers);
         if (observe === 'body') {
                return response.pipe(
                    map((httpResponse: HttpResponse) => <Index>(httpResponse.response))
@@ -455,17 +455,17 @@ export class DefaultService implements DefaultServiceInterface {
     /**
      * Get Index Subjects
      * 
-     * @param indexId 
+     * @param index_id 
      * @param type 
      * @param limit 
      * @param offset 
      
      */
-    public getIndexSubjectsByIndexId(indexId: number, type?: SubjectType, limit?: number, offset?: number, observe?: 'body', headers?: Headers): Observable<PagedIndexSubject>;
-    public getIndexSubjectsByIndexId(indexId: number, type?: SubjectType, limit?: number, offset?: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<PagedIndexSubject>>;
-    public getIndexSubjectsByIndexId(indexId: number, type?: SubjectType, limit?: number, offset?: number, observe: any = 'body', headers: Headers = {}): Observable<any> {
-        if (indexId === null || indexId === undefined){
-            throw new Error('Required parameter indexId was null or undefined when calling getIndexSubjectsByIndexId.');
+    public getIndexSubjectsByIndexId(index_id: number, type?: SubjectType, limit?: number, offset?: number, observe?: 'body', headers?: Headers): Observable<PagedIndexSubject>;
+    public getIndexSubjectsByIndexId(index_id: number, type?: SubjectType, limit?: number, offset?: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<PagedIndexSubject>>;
+    public getIndexSubjectsByIndexId(index_id: number, type?: SubjectType, limit?: number, offset?: number, observe: any = 'body', headers: Headers = {}): Observable<any> {
+        if (index_id === null || index_id === undefined){
+            throw new Error('Required parameter index_id was null or undefined when calling getIndexSubjectsByIndexId.');
         }
 
         let queryParameters: string[] = [];
@@ -485,7 +485,7 @@ export class DefaultService implements DefaultServiceInterface {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<PagedIndexSubject>> = this.httpClient.get(`${this.basePath}/v0/indices/${encodeURIComponent(String(indexId))}/subjects?${queryParameters.join('&')}`, headers);
+        const response: Observable<HttpResponse<PagedIndexSubject>> = this.httpClient.get(`${this.basePath}/v0/indices/${encodeURIComponent(String(index_id))}/subjects?${queryParameters.join('&')}`, headers);
         if (observe === 'body') {
                return response.pipe(
                    map((httpResponse: HttpResponse) => <PagedIndexSubject>(httpResponse.response))
@@ -522,19 +522,19 @@ export class DefaultService implements DefaultServiceInterface {
     /**
      * Get Person
      * cache with 60s
-     * @param personId 
+     * @param person_id 
      
      */
-    public getPersonById(personId: number, observe?: 'body', headers?: Headers): Observable<PersonDetail>;
-    public getPersonById(personId: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<PersonDetail>>;
-    public getPersonById(personId: number, observe: any = 'body', headers: Headers = {}): Observable<any> {
-        if (personId === null || personId === undefined){
-            throw new Error('Required parameter personId was null or undefined when calling getPersonById.');
+    public getPersonById(person_id: number, observe?: 'body', headers?: Headers): Observable<PersonDetail>;
+    public getPersonById(person_id: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<PersonDetail>>;
+    public getPersonById(person_id: number, observe: any = 'body', headers: Headers = {}): Observable<any> {
+        if (person_id === null || person_id === undefined){
+            throw new Error('Required parameter person_id was null or undefined when calling getPersonById.');
         }
 
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<PersonDetail>> = this.httpClient.get(`${this.basePath}/v0/persons/${encodeURIComponent(String(personId))}`, headers);
+        const response: Observable<HttpResponse<PersonDetail>> = this.httpClient.get(`${this.basePath}/v0/persons/${encodeURIComponent(String(person_id))}`, headers);
         if (observe === 'body') {
                return response.pipe(
                    map((httpResponse: HttpResponse) => <PersonDetail>(httpResponse.response))
@@ -547,19 +547,19 @@ export class DefaultService implements DefaultServiceInterface {
     /**
      * Get Person Revision
      * 
-     * @param revisionId 
+     * @param revision_id 
      
      */
-    public getPersonRevisionByRevisionId(revisionId: number, observe?: 'body', headers?: Headers): Observable<PersonRevision>;
-    public getPersonRevisionByRevisionId(revisionId: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<PersonRevision>>;
-    public getPersonRevisionByRevisionId(revisionId: number, observe: any = 'body', headers: Headers = {}): Observable<any> {
-        if (revisionId === null || revisionId === undefined){
-            throw new Error('Required parameter revisionId was null or undefined when calling getPersonRevisionByRevisionId.');
+    public getPersonRevisionByRevisionId(revision_id: number, observe?: 'body', headers?: Headers): Observable<PersonRevision>;
+    public getPersonRevisionByRevisionId(revision_id: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<PersonRevision>>;
+    public getPersonRevisionByRevisionId(revision_id: number, observe: any = 'body', headers: Headers = {}): Observable<any> {
+        if (revision_id === null || revision_id === undefined){
+            throw new Error('Required parameter revision_id was null or undefined when calling getPersonRevisionByRevisionId.');
         }
 
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<PersonRevision>> = this.httpClient.get(`${this.basePath}/v0/revisions/persons/${encodeURIComponent(String(revisionId))}`, headers);
+        const response: Observable<HttpResponse<PersonRevision>> = this.httpClient.get(`${this.basePath}/v0/revisions/persons/${encodeURIComponent(String(revision_id))}`, headers);
         if (observe === 'body') {
                return response.pipe(
                    map((httpResponse: HttpResponse) => <PersonRevision>(httpResponse.response))
@@ -572,21 +572,21 @@ export class DefaultService implements DefaultServiceInterface {
     /**
      * Get Person Revisions
      * 
-     * @param personId 
+     * @param person_id 
      * @param limit 
      * @param offset 
      
      */
-    public getPersonRevisions(personId: number, limit?: number, offset?: number, observe?: 'body', headers?: Headers): Observable<PagedRevision>;
-    public getPersonRevisions(personId: number, limit?: number, offset?: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<PagedRevision>>;
-    public getPersonRevisions(personId: number, limit?: number, offset?: number, observe: any = 'body', headers: Headers = {}): Observable<any> {
-        if (personId === null || personId === undefined){
-            throw new Error('Required parameter personId was null or undefined when calling getPersonRevisions.');
+    public getPersonRevisions(person_id: number, limit?: number, offset?: number, observe?: 'body', headers?: Headers): Observable<PagedRevision>;
+    public getPersonRevisions(person_id: number, limit?: number, offset?: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<PagedRevision>>;
+    public getPersonRevisions(person_id: number, limit?: number, offset?: number, observe: any = 'body', headers: Headers = {}): Observable<any> {
+        if (person_id === null || person_id === undefined){
+            throw new Error('Required parameter person_id was null or undefined when calling getPersonRevisions.');
         }
 
         let queryParameters: string[] = [];
-        if (personId !== undefined) {
-            queryParameters.push('personId='+encodeURIComponent(String(personId)));
+        if (person_id !== undefined) {
+            queryParameters.push('person_id='+encodeURIComponent(String(person_id)));
         }
         if (limit !== undefined) {
             queryParameters.push('limit='+encodeURIComponent(String(limit)));
@@ -610,19 +610,19 @@ export class DefaultService implements DefaultServiceInterface {
     /**
      * get person related characters
      * 
-     * @param personId 
+     * @param person_id 
      
      */
-    public getRelatedCharactersByPersonId(personId: number, observe?: 'body', headers?: Headers): Observable<Array<PersonCharacter>>;
-    public getRelatedCharactersByPersonId(personId: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<Array<PersonCharacter>>>;
-    public getRelatedCharactersByPersonId(personId: number, observe: any = 'body', headers: Headers = {}): Observable<any> {
-        if (personId === null || personId === undefined){
-            throw new Error('Required parameter personId was null or undefined when calling getRelatedCharactersByPersonId.');
+    public getRelatedCharactersByPersonId(person_id: number, observe?: 'body', headers?: Headers): Observable<Array<PersonCharacter>>;
+    public getRelatedCharactersByPersonId(person_id: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<Array<PersonCharacter>>>;
+    public getRelatedCharactersByPersonId(person_id: number, observe: any = 'body', headers: Headers = {}): Observable<any> {
+        if (person_id === null || person_id === undefined){
+            throw new Error('Required parameter person_id was null or undefined when calling getRelatedCharactersByPersonId.');
         }
 
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<Array<PersonCharacter>>> = this.httpClient.get(`${this.basePath}/v0/persons/${encodeURIComponent(String(personId))}/characters`, headers);
+        const response: Observable<HttpResponse<Array<PersonCharacter>>> = this.httpClient.get(`${this.basePath}/v0/persons/${encodeURIComponent(String(person_id))}/characters`, headers);
         if (observe === 'body') {
                return response.pipe(
                    map((httpResponse: HttpResponse) => <Array<PersonCharacter>>(httpResponse.response))
@@ -635,14 +635,14 @@ export class DefaultService implements DefaultServiceInterface {
     /**
      * Get Subject Characters
      * 
-     * @param subjectId 
+     * @param subject_id 
      
      */
-    public getRelatedCharactersBySubjectId(subjectId: number, observe?: 'body', headers?: Headers): Observable<Array<RelatedCharacter>>;
-    public getRelatedCharactersBySubjectId(subjectId: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<Array<RelatedCharacter>>>;
-    public getRelatedCharactersBySubjectId(subjectId: number, observe: any = 'body', headers: Headers = {}): Observable<any> {
-        if (subjectId === null || subjectId === undefined){
-            throw new Error('Required parameter subjectId was null or undefined when calling getRelatedCharactersBySubjectId.');
+    public getRelatedCharactersBySubjectId(subject_id: number, observe?: 'body', headers?: Headers): Observable<Array<RelatedCharacter>>;
+    public getRelatedCharactersBySubjectId(subject_id: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<Array<RelatedCharacter>>>;
+    public getRelatedCharactersBySubjectId(subject_id: number, observe: any = 'body', headers: Headers = {}): Observable<any> {
+        if (subject_id === null || subject_id === undefined){
+            throw new Error('Required parameter subject_id was null or undefined when calling getRelatedCharactersBySubjectId.');
         }
 
         // authentication (OptionalHTTPBearer) required
@@ -651,7 +651,7 @@ export class DefaultService implements DefaultServiceInterface {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<Array<RelatedCharacter>>> = this.httpClient.get(`${this.basePath}/v0/subjects/${encodeURIComponent(String(subjectId))}/characters`, headers);
+        const response: Observable<HttpResponse<Array<RelatedCharacter>>> = this.httpClient.get(`${this.basePath}/v0/subjects/${encodeURIComponent(String(subject_id))}/characters`, headers);
         if (observe === 'body') {
                return response.pipe(
                    map((httpResponse: HttpResponse) => <Array<RelatedCharacter>>(httpResponse.response))
@@ -664,19 +664,19 @@ export class DefaultService implements DefaultServiceInterface {
     /**
      * get character related persons
      * 
-     * @param characterId 
+     * @param character_id 
      
      */
-    public getRelatedPersonsByCharacterId(characterId: number, observe?: 'body', headers?: Headers): Observable<Array<CharacterPerson>>;
-    public getRelatedPersonsByCharacterId(characterId: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<Array<CharacterPerson>>>;
-    public getRelatedPersonsByCharacterId(characterId: number, observe: any = 'body', headers: Headers = {}): Observable<any> {
-        if (characterId === null || characterId === undefined){
-            throw new Error('Required parameter characterId was null or undefined when calling getRelatedPersonsByCharacterId.');
+    public getRelatedPersonsByCharacterId(character_id: number, observe?: 'body', headers?: Headers): Observable<Array<CharacterPerson>>;
+    public getRelatedPersonsByCharacterId(character_id: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<Array<CharacterPerson>>>;
+    public getRelatedPersonsByCharacterId(character_id: number, observe: any = 'body', headers: Headers = {}): Observable<any> {
+        if (character_id === null || character_id === undefined){
+            throw new Error('Required parameter character_id was null or undefined when calling getRelatedPersonsByCharacterId.');
         }
 
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<Array<CharacterPerson>>> = this.httpClient.get(`${this.basePath}/v0/characters/${encodeURIComponent(String(characterId))}/persons`, headers);
+        const response: Observable<HttpResponse<Array<CharacterPerson>>> = this.httpClient.get(`${this.basePath}/v0/characters/${encodeURIComponent(String(character_id))}/persons`, headers);
         if (observe === 'body') {
                return response.pipe(
                    map((httpResponse: HttpResponse) => <Array<CharacterPerson>>(httpResponse.response))
@@ -689,14 +689,14 @@ export class DefaultService implements DefaultServiceInterface {
     /**
      * Get Subject Persons
      * 
-     * @param subjectId 
+     * @param subject_id 
      
      */
-    public getRelatedPersonsBySubjectId(subjectId: number, observe?: 'body', headers?: Headers): Observable<Array<RelatedPerson>>;
-    public getRelatedPersonsBySubjectId(subjectId: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<Array<RelatedPerson>>>;
-    public getRelatedPersonsBySubjectId(subjectId: number, observe: any = 'body', headers: Headers = {}): Observable<any> {
-        if (subjectId === null || subjectId === undefined){
-            throw new Error('Required parameter subjectId was null or undefined when calling getRelatedPersonsBySubjectId.');
+    public getRelatedPersonsBySubjectId(subject_id: number, observe?: 'body', headers?: Headers): Observable<Array<RelatedPerson>>;
+    public getRelatedPersonsBySubjectId(subject_id: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<Array<RelatedPerson>>>;
+    public getRelatedPersonsBySubjectId(subject_id: number, observe: any = 'body', headers: Headers = {}): Observable<any> {
+        if (subject_id === null || subject_id === undefined){
+            throw new Error('Required parameter subject_id was null or undefined when calling getRelatedPersonsBySubjectId.');
         }
 
         // authentication (OptionalHTTPBearer) required
@@ -705,7 +705,7 @@ export class DefaultService implements DefaultServiceInterface {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<Array<RelatedPerson>>> = this.httpClient.get(`${this.basePath}/v0/subjects/${encodeURIComponent(String(subjectId))}/persons`, headers);
+        const response: Observable<HttpResponse<Array<RelatedPerson>>> = this.httpClient.get(`${this.basePath}/v0/subjects/${encodeURIComponent(String(subject_id))}/persons`, headers);
         if (observe === 'body') {
                return response.pipe(
                    map((httpResponse: HttpResponse) => <Array<RelatedPerson>>(httpResponse.response))
@@ -718,19 +718,19 @@ export class DefaultService implements DefaultServiceInterface {
     /**
      * get character related subjects
      * 
-     * @param characterId 
+     * @param character_id 
      
      */
-    public getRelatedSubjectsByCharacterId(characterId: number, observe?: 'body', headers?: Headers): Observable<Array<PolApiV0ModelsRelatedSubject>>;
-    public getRelatedSubjectsByCharacterId(characterId: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<Array<PolApiV0ModelsRelatedSubject>>>;
-    public getRelatedSubjectsByCharacterId(characterId: number, observe: any = 'body', headers: Headers = {}): Observable<any> {
-        if (characterId === null || characterId === undefined){
-            throw new Error('Required parameter characterId was null or undefined when calling getRelatedSubjectsByCharacterId.');
+    public getRelatedSubjectsByCharacterId(character_id: number, observe?: 'body', headers?: Headers): Observable<Array<PolApiV0ModelsRelatedSubject>>;
+    public getRelatedSubjectsByCharacterId(character_id: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<Array<PolApiV0ModelsRelatedSubject>>>;
+    public getRelatedSubjectsByCharacterId(character_id: number, observe: any = 'body', headers: Headers = {}): Observable<any> {
+        if (character_id === null || character_id === undefined){
+            throw new Error('Required parameter character_id was null or undefined when calling getRelatedSubjectsByCharacterId.');
         }
 
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<Array<PolApiV0ModelsRelatedSubject>>> = this.httpClient.get(`${this.basePath}/v0/characters/${encodeURIComponent(String(characterId))}/subjects`, headers);
+        const response: Observable<HttpResponse<Array<PolApiV0ModelsRelatedSubject>>> = this.httpClient.get(`${this.basePath}/v0/characters/${encodeURIComponent(String(character_id))}/subjects`, headers);
         if (observe === 'body') {
                return response.pipe(
                    map((httpResponse: HttpResponse) => <Array<PolApiV0ModelsRelatedSubject>>(httpResponse.response))
@@ -743,19 +743,19 @@ export class DefaultService implements DefaultServiceInterface {
     /**
      * get person related subjects
      * 
-     * @param personId 
+     * @param person_id 
      
      */
-    public getRelatedSubjectsByPersonId(personId: number, observe?: 'body', headers?: Headers): Observable<Array<PolApiV0ModelsRelatedSubject>>;
-    public getRelatedSubjectsByPersonId(personId: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<Array<PolApiV0ModelsRelatedSubject>>>;
-    public getRelatedSubjectsByPersonId(personId: number, observe: any = 'body', headers: Headers = {}): Observable<any> {
-        if (personId === null || personId === undefined){
-            throw new Error('Required parameter personId was null or undefined when calling getRelatedSubjectsByPersonId.');
+    public getRelatedSubjectsByPersonId(person_id: number, observe?: 'body', headers?: Headers): Observable<Array<PolApiV0ModelsRelatedSubject>>;
+    public getRelatedSubjectsByPersonId(person_id: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<Array<PolApiV0ModelsRelatedSubject>>>;
+    public getRelatedSubjectsByPersonId(person_id: number, observe: any = 'body', headers: Headers = {}): Observable<any> {
+        if (person_id === null || person_id === undefined){
+            throw new Error('Required parameter person_id was null or undefined when calling getRelatedSubjectsByPersonId.');
         }
 
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<Array<PolApiV0ModelsRelatedSubject>>> = this.httpClient.get(`${this.basePath}/v0/persons/${encodeURIComponent(String(personId))}/subjects`, headers);
+        const response: Observable<HttpResponse<Array<PolApiV0ModelsRelatedSubject>>> = this.httpClient.get(`${this.basePath}/v0/persons/${encodeURIComponent(String(person_id))}/subjects`, headers);
         if (observe === 'body') {
                return response.pipe(
                    map((httpResponse: HttpResponse) => <Array<PolApiV0ModelsRelatedSubject>>(httpResponse.response))
@@ -768,14 +768,14 @@ export class DefaultService implements DefaultServiceInterface {
     /**
      * Get Subject Relations
      * 
-     * @param subjectId 
+     * @param subject_id 
      
      */
-    public getRelatedSubjectsBySubjectId(subjectId: number, observe?: 'body', headers?: Headers): Observable<Array<PolApiV0ModelsSubjectRelatedSubject>>;
-    public getRelatedSubjectsBySubjectId(subjectId: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<Array<PolApiV0ModelsSubjectRelatedSubject>>>;
-    public getRelatedSubjectsBySubjectId(subjectId: number, observe: any = 'body', headers: Headers = {}): Observable<any> {
-        if (subjectId === null || subjectId === undefined){
-            throw new Error('Required parameter subjectId was null or undefined when calling getRelatedSubjectsBySubjectId.');
+    public getRelatedSubjectsBySubjectId(subject_id: number, observe?: 'body', headers?: Headers): Observable<Array<PolApiV0ModelsSubjectRelatedSubject>>;
+    public getRelatedSubjectsBySubjectId(subject_id: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<Array<PolApiV0ModelsSubjectRelatedSubject>>>;
+    public getRelatedSubjectsBySubjectId(subject_id: number, observe: any = 'body', headers: Headers = {}): Observable<any> {
+        if (subject_id === null || subject_id === undefined){
+            throw new Error('Required parameter subject_id was null or undefined when calling getRelatedSubjectsBySubjectId.');
         }
 
         // authentication (OptionalHTTPBearer) required
@@ -784,7 +784,7 @@ export class DefaultService implements DefaultServiceInterface {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<Array<PolApiV0ModelsSubjectRelatedSubject>>> = this.httpClient.get(`${this.basePath}/v0/subjects/${encodeURIComponent(String(subjectId))}/subjects`, headers);
+        const response: Observable<HttpResponse<Array<PolApiV0ModelsSubjectRelatedSubject>>> = this.httpClient.get(`${this.basePath}/v0/subjects/${encodeURIComponent(String(subject_id))}/subjects`, headers);
         if (observe === 'body') {
                return response.pipe(
                    map((httpResponse: HttpResponse) => <Array<PolApiV0ModelsSubjectRelatedSubject>>(httpResponse.response))
@@ -797,14 +797,14 @@ export class DefaultService implements DefaultServiceInterface {
     /**
      * 获取条目
      * cache with 300s
-     * @param subjectId 
+     * @param subject_id 
      
      */
-    public getSubjectById(subjectId: number, observe?: 'body', headers?: Headers): Observable<Subject>;
-    public getSubjectById(subjectId: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<Subject>>;
-    public getSubjectById(subjectId: number, observe: any = 'body', headers: Headers = {}): Observable<any> {
-        if (subjectId === null || subjectId === undefined){
-            throw new Error('Required parameter subjectId was null or undefined when calling getSubjectById.');
+    public getSubjectById(subject_id: number, observe?: 'body', headers?: Headers): Observable<Subject>;
+    public getSubjectById(subject_id: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<Subject>>;
+    public getSubjectById(subject_id: number, observe: any = 'body', headers: Headers = {}): Observable<any> {
+        if (subject_id === null || subject_id === undefined){
+            throw new Error('Required parameter subject_id was null or undefined when calling getSubjectById.');
         }
 
         // authentication (OptionalHTTPBearer) required
@@ -813,7 +813,7 @@ export class DefaultService implements DefaultServiceInterface {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<Subject>> = this.httpClient.get(`${this.basePath}/v0/subjects/${encodeURIComponent(String(subjectId))}`, headers);
+        const response: Observable<HttpResponse<Subject>> = this.httpClient.get(`${this.basePath}/v0/subjects/${encodeURIComponent(String(subject_id))}`, headers);
         if (observe === 'body') {
                return response.pipe(
                    map((httpResponse: HttpResponse) => <Subject>(httpResponse.response))
@@ -826,19 +826,19 @@ export class DefaultService implements DefaultServiceInterface {
     /**
      * Get Subject Revision
      * 
-     * @param revisionId 
+     * @param revision_id 
      
      */
-    public getSubjectRevisionByRevisionId(revisionId: number, observe?: 'body', headers?: Headers): Observable<SubjectRevision>;
-    public getSubjectRevisionByRevisionId(revisionId: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<SubjectRevision>>;
-    public getSubjectRevisionByRevisionId(revisionId: number, observe: any = 'body', headers: Headers = {}): Observable<any> {
-        if (revisionId === null || revisionId === undefined){
-            throw new Error('Required parameter revisionId was null or undefined when calling getSubjectRevisionByRevisionId.');
+    public getSubjectRevisionByRevisionId(revision_id: number, observe?: 'body', headers?: Headers): Observable<SubjectRevision>;
+    public getSubjectRevisionByRevisionId(revision_id: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<SubjectRevision>>;
+    public getSubjectRevisionByRevisionId(revision_id: number, observe: any = 'body', headers: Headers = {}): Observable<any> {
+        if (revision_id === null || revision_id === undefined){
+            throw new Error('Required parameter revision_id was null or undefined when calling getSubjectRevisionByRevisionId.');
         }
 
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<SubjectRevision>> = this.httpClient.get(`${this.basePath}/v0/revisions/subjects/${encodeURIComponent(String(revisionId))}`, headers);
+        const response: Observable<HttpResponse<SubjectRevision>> = this.httpClient.get(`${this.basePath}/v0/revisions/subjects/${encodeURIComponent(String(revision_id))}`, headers);
         if (observe === 'body') {
                return response.pipe(
                    map((httpResponse: HttpResponse) => <SubjectRevision>(httpResponse.response))
@@ -851,21 +851,21 @@ export class DefaultService implements DefaultServiceInterface {
     /**
      * Get Subject Revisions
      * 
-     * @param subjectId 
+     * @param subject_id 
      * @param limit 
      * @param offset 
      
      */
-    public getSubjectRevisions(subjectId: number, limit?: number, offset?: number, observe?: 'body', headers?: Headers): Observable<PagedRevision>;
-    public getSubjectRevisions(subjectId: number, limit?: number, offset?: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<PagedRevision>>;
-    public getSubjectRevisions(subjectId: number, limit?: number, offset?: number, observe: any = 'body', headers: Headers = {}): Observable<any> {
-        if (subjectId === null || subjectId === undefined){
-            throw new Error('Required parameter subjectId was null or undefined when calling getSubjectRevisions.');
+    public getSubjectRevisions(subject_id: number, limit?: number, offset?: number, observe?: 'body', headers?: Headers): Observable<PagedRevision>;
+    public getSubjectRevisions(subject_id: number, limit?: number, offset?: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<PagedRevision>>;
+    public getSubjectRevisions(subject_id: number, limit?: number, offset?: number, observe: any = 'body', headers: Headers = {}): Observable<any> {
+        if (subject_id === null || subject_id === undefined){
+            throw new Error('Required parameter subject_id was null or undefined when calling getSubjectRevisions.');
         }
 
         let queryParameters: string[] = [];
-        if (subjectId !== undefined) {
-            queryParameters.push('subjectId='+encodeURIComponent(String(subjectId)));
+        if (subject_id !== undefined) {
+            queryParameters.push('subject_id='+encodeURIComponent(String(subject_id)));
         }
         if (limit !== undefined) {
             queryParameters.push('limit='+encodeURIComponent(String(limit)));
@@ -915,23 +915,23 @@ export class DefaultService implements DefaultServiceInterface {
      * 用户收藏统计
      * 
      * @param username 用户名 &lt;br&gt; 也可使用 UID
-     * @param appId [https://bgm.tv/dev/app](https://bgm.tv/dev/app) 申请到的 App ID
+     * @param app_id [https://bgm.tv/dev/app](https://bgm.tv/dev/app) 申请到的 App ID
      
      */
-    public getUserCollectionStatusByUsername(username: string, appId: string, observe?: 'body', headers?: Headers): Observable<Array<InlineResponse2001>>;
-    public getUserCollectionStatusByUsername(username: string, appId: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<Array<InlineResponse2001>>>;
-    public getUserCollectionStatusByUsername(username: string, appId: string, observe: any = 'body', headers: Headers = {}): Observable<any> {
+    public getUserCollectionStatusByUsername(username: string, app_id: string, observe?: 'body', headers?: Headers): Observable<Array<InlineResponse2001>>;
+    public getUserCollectionStatusByUsername(username: string, app_id: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<Array<InlineResponse2001>>>;
+    public getUserCollectionStatusByUsername(username: string, app_id: string, observe: any = 'body', headers: Headers = {}): Observable<any> {
         if (username === null || username === undefined){
             throw new Error('Required parameter username was null or undefined when calling getUserCollectionStatusByUsername.');
         }
 
-        if (appId === null || appId === undefined){
-            throw new Error('Required parameter appId was null or undefined when calling getUserCollectionStatusByUsername.');
+        if (app_id === null || app_id === undefined){
+            throw new Error('Required parameter app_id was null or undefined when calling getUserCollectionStatusByUsername.');
         }
 
         let queryParameters: string[] = [];
-        if (appId !== undefined) {
-            queryParameters.push('appId='+encodeURIComponent(String(appId)));
+        if (app_id !== undefined) {
+            queryParameters.push('app_id='+encodeURIComponent(String(app_id)));
         }
 
         headers['Accept'] = 'application/json';
@@ -950,37 +950,37 @@ export class DefaultService implements DefaultServiceInterface {
      * 用户收藏概览
      * 
      * @param username 用户名 &lt;br&gt; 也可使用 UID
-     * @param subjectType 条目类型，详见 [SubjectTypeName](#model-SubjectTypeName)
-     * @param appId [https://bgm.tv/dev/app](https://bgm.tv/dev/app) 申请到的 App ID
-     * @param maxResults 显示条数 &lt;br&gt; 最多 25
+     * @param subject_type 条目类型，详见 [SubjectTypeName](#model-SubjectTypeName)
+     * @param app_id [https://bgm.tv/dev/app](https://bgm.tv/dev/app) 申请到的 App ID
+     * @param max_results 显示条数 &lt;br&gt; 最多 25
      
      */
-    public getUserCollectionsBySubjectType(username: string, subjectType: SubjectTypeName, appId: string, maxResults?: number, observe?: 'body', headers?: Headers): Observable<Array<InlineResponse200>>;
-    public getUserCollectionsBySubjectType(username: string, subjectType: SubjectTypeName, appId: string, maxResults?: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<Array<InlineResponse200>>>;
-    public getUserCollectionsBySubjectType(username: string, subjectType: SubjectTypeName, appId: string, maxResults?: number, observe: any = 'body', headers: Headers = {}): Observable<any> {
+    public getUserCollectionsBySubjectType(username: string, subject_type: SubjectTypeName, app_id: string, max_results?: number, observe?: 'body', headers?: Headers): Observable<Array<InlineResponse200>>;
+    public getUserCollectionsBySubjectType(username: string, subject_type: SubjectTypeName, app_id: string, max_results?: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<Array<InlineResponse200>>>;
+    public getUserCollectionsBySubjectType(username: string, subject_type: SubjectTypeName, app_id: string, max_results?: number, observe: any = 'body', headers: Headers = {}): Observable<any> {
         if (username === null || username === undefined){
             throw new Error('Required parameter username was null or undefined when calling getUserCollectionsBySubjectType.');
         }
 
-        if (subjectType === null || subjectType === undefined){
-            throw new Error('Required parameter subjectType was null or undefined when calling getUserCollectionsBySubjectType.');
+        if (subject_type === null || subject_type === undefined){
+            throw new Error('Required parameter subject_type was null or undefined when calling getUserCollectionsBySubjectType.');
         }
 
-        if (appId === null || appId === undefined){
-            throw new Error('Required parameter appId was null or undefined when calling getUserCollectionsBySubjectType.');
+        if (app_id === null || app_id === undefined){
+            throw new Error('Required parameter app_id was null or undefined when calling getUserCollectionsBySubjectType.');
         }
 
         let queryParameters: string[] = [];
-        if (appId !== undefined) {
-            queryParameters.push('appId='+encodeURIComponent(String(appId)));
+        if (app_id !== undefined) {
+            queryParameters.push('app_id='+encodeURIComponent(String(app_id)));
         }
-        if (maxResults !== undefined) {
-            queryParameters.push('maxResults='+encodeURIComponent(String(maxResults)));
+        if (max_results !== undefined) {
+            queryParameters.push('max_results='+encodeURIComponent(String(max_results)));
         }
 
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<Array<InlineResponse200>>> = this.httpClient.get(`${this.basePath}/user/${encodeURIComponent(String(username))}/collections/${encodeURIComponent(String(subjectType))}?${queryParameters.join('&')}`, headers);
+        const response: Observable<HttpResponse<Array<InlineResponse200>>> = this.httpClient.get(`${this.basePath}/user/${encodeURIComponent(String(username))}/collections/${encodeURIComponent(String(subject_type))}?${queryParameters.join('&')}`, headers);
         if (observe === 'body') {
                return response.pipe(
                    map((httpResponse: HttpResponse) => <Array<InlineResponse200>>(httpResponse.response))
@@ -994,22 +994,22 @@ export class DefaultService implements DefaultServiceInterface {
      * 获取用户收藏
      * 获取对应用户的收藏，查看私有收藏需要access token。
      * @param username 设置了 username 后无法使用UID
-     * @param subjectType 条目类型，默认为全部  具体含义见 [SubjectType](#model-SubjectType)
+     * @param subject_type 条目类型，默认为全部  具体含义见 [SubjectType](#model-SubjectType)
      * @param type 收藏类型，默认为全部  具体含义见 [CollectionType](#model-CollectionType)
      * @param limit 
      * @param offset 
      
      */
-    public getUserCollectionsByUsername(username: string, subjectType?: SubjectType, type?: CollectionType, limit?: number, offset?: number, observe?: 'body', headers?: Headers): Observable<PagedUserCollection>;
-    public getUserCollectionsByUsername(username: string, subjectType?: SubjectType, type?: CollectionType, limit?: number, offset?: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<PagedUserCollection>>;
-    public getUserCollectionsByUsername(username: string, subjectType?: SubjectType, type?: CollectionType, limit?: number, offset?: number, observe: any = 'body', headers: Headers = {}): Observable<any> {
+    public getUserCollectionsByUsername(username: string, subject_type?: SubjectType, type?: CollectionType, limit?: number, offset?: number, observe?: 'body', headers?: Headers): Observable<PagedUserCollection>;
+    public getUserCollectionsByUsername(username: string, subject_type?: SubjectType, type?: CollectionType, limit?: number, offset?: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<PagedUserCollection>>;
+    public getUserCollectionsByUsername(username: string, subject_type?: SubjectType, type?: CollectionType, limit?: number, offset?: number, observe: any = 'body', headers: Headers = {}): Observable<any> {
         if (username === null || username === undefined){
             throw new Error('Required parameter username was null or undefined when calling getUserCollectionsByUsername.');
         }
 
         let queryParameters: string[] = [];
-        if (subjectType !== undefined) {
-            queryParameters.push('subjectType='+encodeURIComponent(String(subjectType)));
+        if (subject_type !== undefined) {
+            queryParameters.push('subject_type='+encodeURIComponent(String(subject_type)));
         }
         if (type !== undefined) {
             queryParameters.push('type='+encodeURIComponent(String(type)));
@@ -1041,19 +1041,19 @@ export class DefaultService implements DefaultServiceInterface {
      * 用户收视进度
      * 
      * @param username 用户名 &lt;br&gt; 也可使用 UID
-     * @param subjectId 条目 ID &lt;br&gt; 获取指定条目收视进度
+     * @param subject_id 条目 ID &lt;br&gt; 获取指定条目收视进度
      
      */
-    public getUserProgressByUsername(username: string, subjectId?: number, observe?: 'body', headers?: Headers): Observable<Array<InlineResponse2002>>;
-    public getUserProgressByUsername(username: string, subjectId?: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<Array<InlineResponse2002>>>;
-    public getUserProgressByUsername(username: string, subjectId?: number, observe: any = 'body', headers: Headers = {}): Observable<any> {
+    public getUserProgressByUsername(username: string, subject_id?: number, observe?: 'body', headers?: Headers): Observable<Array<InlineResponse2002>>;
+    public getUserProgressByUsername(username: string, subject_id?: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<Array<InlineResponse2002>>>;
+    public getUserProgressByUsername(username: string, subject_id?: number, observe: any = 'body', headers: Headers = {}): Observable<any> {
         if (username === null || username === undefined){
             throw new Error('Required parameter username was null or undefined when calling getUserProgressByUsername.');
         }
 
         let queryParameters: string[] = [];
-        if (subjectId !== undefined) {
-            queryParameters.push('subjectId='+encodeURIComponent(String(subjectId)));
+        if (subject_id !== undefined) {
+            queryParameters.push('subject_id='+encodeURIComponent(String(subject_id)));
         }
 
         // authentication (OptionalHTTPBearer) required
@@ -1079,12 +1079,12 @@ export class DefaultService implements DefaultServiceInterface {
      * @param type 条目类型，参考 [SubjectType](#model-SubjectType)
      * @param responseGroup 返回数据大小，参考 [ResponseGroup](#model-ResponseGroup) &lt;br&gt; 默认为 small
      * @param start 开始条数
-     * @param maxResults 每页条数 &lt;br&gt; 最多 25
+     * @param max_results 每页条数 &lt;br&gt; 最多 25
      
      */
-    public searchSubjectByKeywords(keywords: string, type?: SubjectType, responseGroup?: ResponseGroup, start?: number, maxResults?: number, observe?: 'body', headers?: Headers): Observable<InlineResponse2004>;
-    public searchSubjectByKeywords(keywords: string, type?: SubjectType, responseGroup?: ResponseGroup, start?: number, maxResults?: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<InlineResponse2004>>;
-    public searchSubjectByKeywords(keywords: string, type?: SubjectType, responseGroup?: ResponseGroup, start?: number, maxResults?: number, observe: any = 'body', headers: Headers = {}): Observable<any> {
+    public searchSubjectByKeywords(keywords: string, type?: SubjectType, responseGroup?: ResponseGroup, start?: number, max_results?: number, observe?: 'body', headers?: Headers): Observable<InlineResponse2004>;
+    public searchSubjectByKeywords(keywords: string, type?: SubjectType, responseGroup?: ResponseGroup, start?: number, max_results?: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<InlineResponse2004>>;
+    public searchSubjectByKeywords(keywords: string, type?: SubjectType, responseGroup?: ResponseGroup, start?: number, max_results?: number, observe: any = 'body', headers: Headers = {}): Observable<any> {
         if (keywords === null || keywords === undefined){
             throw new Error('Required parameter keywords was null or undefined when calling searchSubjectByKeywords.');
         }
@@ -1099,8 +1099,8 @@ export class DefaultService implements DefaultServiceInterface {
         if (start !== undefined) {
             queryParameters.push('start='+encodeURIComponent(String(start)));
         }
-        if (maxResults !== undefined) {
-            queryParameters.push('maxResults='+encodeURIComponent(String(maxResults)));
+        if (max_results !== undefined) {
+            queryParameters.push('max_results='+encodeURIComponent(String(max_results)));
         }
 
         headers['Accept'] = 'application/json';
@@ -1118,7 +1118,7 @@ export class DefaultService implements DefaultServiceInterface {
     /**
      * 管理收藏
      * 管理收藏。Content-type必须为multipart/form-data或application/x-www-form-urlencoded，参数都得放在body里。
-     * @param subjectId 条目 ID
+     * @param subject_id 条目 ID
      * @param action 收藏动作 &lt;br&gt; create &#x3D; 添加收藏 &lt;br&gt; update &#x3D; 更新收藏 &lt;br&gt; 可以统一使用 &#x60;update&#x60;，系统会自动判断需要新建还是更新收藏
      * @param status 
      * @param comment 简评
@@ -1127,11 +1127,11 @@ export class DefaultService implements DefaultServiceInterface {
      * @param privacy 收藏隐私 &lt;br&gt; 0 &#x3D; 公开 &lt;br&gt; 1 &#x3D; 私密 &lt;br&gt; 不填默认为0
      
      */
-    public updateCollectionBySubjectIdWithAction(subjectId: number, action: 'create' | 'update', status: CollectionStatusType, comment?: string, tags?: string, rating?: number, privacy?: number, observe?: 'body', headers?: Headers): Observable<InlineResponse2005>;
-    public updateCollectionBySubjectIdWithAction(subjectId: number, action: 'create' | 'update', status: CollectionStatusType, comment?: string, tags?: string, rating?: number, privacy?: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<InlineResponse2005>>;
-    public updateCollectionBySubjectIdWithAction(subjectId: number, action: 'create' | 'update', status: CollectionStatusType, comment?: string, tags?: string, rating?: number, privacy?: number, observe: any = 'body', headers: Headers = {}): Observable<any> {
-        if (subjectId === null || subjectId === undefined){
-            throw new Error('Required parameter subjectId was null or undefined when calling updateCollectionBySubjectIdWithAction.');
+    public updateCollectionBySubjectIdWithAction(subject_id: number, action: 'create' | 'update', status: CollectionStatusType, comment?: string, tags?: string, rating?: number, privacy?: number, observe?: 'body', headers?: Headers): Observable<InlineResponse2005>;
+    public updateCollectionBySubjectIdWithAction(subject_id: number, action: 'create' | 'update', status: CollectionStatusType, comment?: string, tags?: string, rating?: number, privacy?: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<InlineResponse2005>>;
+    public updateCollectionBySubjectIdWithAction(subject_id: number, action: 'create' | 'update', status: CollectionStatusType, comment?: string, tags?: string, rating?: number, privacy?: number, observe: any = 'body', headers: Headers = {}): Observable<any> {
+        if (subject_id === null || subject_id === undefined){
+            throw new Error('Required parameter subject_id was null or undefined when calling updateCollectionBySubjectIdWithAction.');
         }
 
         if (action === null || action === undefined){
@@ -1166,7 +1166,7 @@ export class DefaultService implements DefaultServiceInterface {
             formData.append('privacy', <any>privacy);
         }
 
-        const response: Observable<HttpResponse<InlineResponse2005>> = this.httpClient.post(`${this.basePath}/collection/${encodeURIComponent(String(subjectId))}/${encodeURIComponent(String(action))}`, formData, headers);
+        const response: Observable<HttpResponse<InlineResponse2005>> = this.httpClient.post(`${this.basePath}/collection/${encodeURIComponent(String(subject_id))}/${encodeURIComponent(String(action))}`, formData, headers);
         if (observe === 'body') {
                return response.pipe(
                    map((httpResponse: HttpResponse) => <InlineResponse2005>(httpResponse.response))
@@ -1181,12 +1181,12 @@ export class DefaultService implements DefaultServiceInterface {
      * 
      * @param id 章节 ID
      * @param status 收视类型，参考 [EpStatusType](#model-EpStatusType)
-     * @param epId 使用 POST 批量更新 &lt;br&gt; 将章节以半角逗号分隔，如 &#x60;3697,3698,3699&#x60;。请求时 URL 中的 ep_id 为最后一个章节 ID
+     * @param ep_id 使用 POST 批量更新 &lt;br&gt; 将章节以半角逗号分隔，如 &#x60;3697,3698,3699&#x60;。请求时 URL 中的 ep_id 为最后一个章节 ID
      
      */
-    public updateEpisodeStatus(id: number, status: EpStatusType, epId?: string, observe?: 'body', headers?: Headers): Observable<StatusCode>;
-    public updateEpisodeStatus(id: number, status: EpStatusType, epId?: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<StatusCode>>;
-    public updateEpisodeStatus(id: number, status: EpStatusType, epId?: string, observe: any = 'body', headers: Headers = {}): Observable<any> {
+    public updateEpisodeStatus(id: number, status: EpStatusType, ep_id?: string, observe?: 'body', headers?: Headers): Observable<StatusCode>;
+    public updateEpisodeStatus(id: number, status: EpStatusType, ep_id?: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<StatusCode>>;
+    public updateEpisodeStatus(id: number, status: EpStatusType, ep_id?: string, observe: any = 'body', headers: Headers = {}): Observable<any> {
         if (id === null || id === undefined){
             throw new Error('Required parameter id was null or undefined when calling updateEpisodeStatus.');
         }
@@ -1196,8 +1196,8 @@ export class DefaultService implements DefaultServiceInterface {
         }
 
         let queryParameters: string[] = [];
-        if (epId !== undefined) {
-            queryParameters.push('epId='+encodeURIComponent(String(epId)));
+        if (ep_id !== undefined) {
+            queryParameters.push('ep_id='+encodeURIComponent(String(ep_id)));
         }
 
         // authentication (HTTPBearer) required

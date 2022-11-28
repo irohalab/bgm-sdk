@@ -1,15 +1,23 @@
 {
   "name": "bgm-sdk",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Typescript SDK for bgm.tv",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "update": "wget https://bangumi.github.io/api/dist.json",
     "generate": "npm run clean:src && npx openapi-generator-cli generate",
-    "clean:dist": "rimraf sdk/typescript/inversify/dist/*",
-    "clean:src": "rimraf sdk/typescript/inversify/src/",
-    "build": "npm run clean:dist && tsc --project sdk/typescript/inversify/tsconfig.json"
+    "generate:axios": "npm run clean:src:axios && npx openapi-generator-cli generate --generator-key axios",
+    "generate:inversify": "npm run clean:src:inversify && npx openapi-generator-cli generate --generator-key --inline-schema-name-mappings inversify",
+    "clean:dist:inversify": "rimraf sdk/typescript/inversify/dist/*",
+    "clean:dist:axios": "rimraf sdk/typescript/axios/dist/*",
+    "clean:dist": "npm run clean:dist:axios && npm run clean:dist:inversify",
+    "clean:src:inversify": "rimraf sdk/typescript/inversify/src/",
+    "clean:src:axios": "rimraf sdk/typescript/axios/src/*",
+    "clean:src": "npm run clean:src:axios && npm run clean:src:inversify",
+    "build:axios": "npm run clean:dist:axios && tsc --project sdk/typescript/axios/tsconfig.json",
+    "build:inversify": "npm run clean:dist:inversify && tsc --project sdk/typescript/inversify/tsconfig.json",
+    "build": "npm run build:axios && npm run build:inversify"
   },
   "repository": {
     "type": "git",
@@ -23,7 +31,8 @@
   "homepage": "https://github.com/irohalab/bgm-sdk#readme",
   "dependencies": {},
   "devDependencies": {
-    "@openapitools/openapi-generator-cli": "^2.4.26",
+    "@openapitools/openapi-generator-cli": "^2.5.2",
+    "@types/node": "^18.11.9",
     "inversify": "^6.0.1",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",

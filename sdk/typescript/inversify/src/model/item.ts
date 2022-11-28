@@ -12,8 +12,7 @@
 import { KV } from './kV';
 import { V } from './v';
 
-
-export interface Item { 
+export interface Item {
     key: string;
     value: string | Array<KV | V>;
 }

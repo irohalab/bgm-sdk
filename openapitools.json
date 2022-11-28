@@ -10,9 +10,24 @@
         "output": "#{cwd}/sdk/typescript/inversify/src",
         "glob": "dist.json",
         "additionalProperties": {
+          "paramNaming": "original",
           "useRxJS6": "true",
           "withInterfaces": "true",
           "supportsES6": "true"
+        }
+      },
+      "axios": {
+        "generatorName": "typescript-axios",
+        "output": "#{cwd}/sdk/typescript/axios/src",
+        "glob": "dist.json",
+        "additionalProperties": {
+          "paramNaming": "original",
+          "withInterfaces": "true",
+          "supportES6": "true",
+          "withSeparateModelsAndApi": "true",
+          "withNodeImports": "true",
+          "apiPackage": "apis",
+          "modelPackage": "models"
         }
       }
     }
