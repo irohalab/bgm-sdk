@@ -2,7 +2,7 @@
   "$schema": "node_modules/@openapitools/openapi-generator-cli/config.schema.json",
   "spaces": 4,
   "generator-cli": {
-    "version": "5.4.0",
+    "version": "7.8.0",
     "storageDir": "openapi-generator-files",
     "generators": {
       "inversify": {

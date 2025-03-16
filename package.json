@@ -1,6 +1,6 @@
 {
   "name": "bgm-sdk",
-  "version": "1.0.1",
+  "version": "1.2.0",
   "description": "Typescript SDK for bgm.tv",
   "main": "index.js",
   "scripts": {
@@ -31,7 +31,7 @@
   "homepage": "https://github.com/irohalab/bgm-sdk#readme",
   "dependencies": {},
   "devDependencies": {
-    "@openapitools/openapi-generator-cli": "^2.5.2",
+    "@openapitools/openapi-generator-cli": "^2.13.1",
     "@types/node": "^18.11.9",
     "inversify": "^6.0.1",
     "reflect-metadata": "^0.1.13",
