@@ -1,6 +1,6 @@
 {
   "name": "bgm-sdk",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Typescript SDK for bgm.tv",
   "main": "index.js",
   "scripts": {
@@ -34,7 +34,7 @@
     "@openapitools/openapi-generator-cli": "^2.13.1",
     "@types/node": "^18.11.9",
     "inversify": "^6.0.1",
-    "reflect-metadata": "^0.1.13",
+    "reflect-metadata": "^0.2.2",
     "rimraf": "^3.0.2",
     "rxjs": "^7.5.5",
     "typescript": "^4.6.3"

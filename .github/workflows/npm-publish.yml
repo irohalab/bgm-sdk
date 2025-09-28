@@ -18,9 +18,9 @@ jobs:
           node-version: 20
           registry-url: https://registry.npmjs.org/
           scope: '@irohalab'
-      - run: yarn
-      - run: yarn run build
+      - run: npm ci
+      - run: npm run build
       - run: ./scripts/publish.sh
-      - run: yarn publish sdk/typescript/inversify/dist
+      - run: npm publish sdk/typescript/inversify/dist
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
