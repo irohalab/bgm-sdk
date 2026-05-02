@@ -92,10 +92,6 @@ model/searchCharactersRequest.ts
 model/searchCharactersRequestFilter.ts
 model/searchPersonsRequest.ts
 model/searchPersonsRequestFilter.ts
-model/searchSubjectByKeywords200Response.ts
-model/searchSubjectByKeywords200ResponseOneOf.ts
-model/searchSubjectByKeywords200ResponseOneOf1.ts
-model/searchSubjectByKeywords200ResponseOneOf2.ts
 model/searchSubjectsRequest.ts
 model/searchSubjectsRequestFilter.ts
 model/slimSubject.ts

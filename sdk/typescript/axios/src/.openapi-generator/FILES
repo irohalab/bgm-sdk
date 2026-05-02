@@ -93,10 +93,6 @@ models/search-characters-request-filter.ts
 models/search-characters-request.ts
 models/search-persons-request-filter.ts
 models/search-persons-request.ts
-models/search-subject-by-keywords200-response-one-of.ts
-models/search-subject-by-keywords200-response-one-of1.ts
-models/search-subject-by-keywords200-response-one-of2.ts
-models/search-subject-by-keywords200-response.ts
 models/search-subjects-request-filter.ts
 models/search-subjects-request.ts
 models/slim-subject.ts
